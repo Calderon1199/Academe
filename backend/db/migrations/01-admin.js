@@ -1,7 +1,7 @@
 'use strict';
 
 let options = {};
-options.tableName = 'Users';
+options.tableName = 'Admins';
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
 }
@@ -15,10 +15,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      username: {
+      firstName: {
         type: Sequelize.STRING(30),
         allowNull: false,
-        unique: true
+      },
+      lastName: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+      },
+      role: {
+        type: Sequelize.STRING(50),
+        allowNull: false
       },
       email: {
         type: Sequelize.STRING(256),
@@ -29,10 +36,10 @@ module.exports = {
         type: Sequelize.STRING.BINARY,
         allowNull: false
       },
-      profileImg: {
-        type: Sequelize.STRING(255),
+      avatarUrl: {
+        type: Sequelize.STRING(256),
         allowNull: false,
-        defaultValue: ""
+        defaultValue: "https://winaero.com/blog/wp-content/uploads/2018/08/Windows-10-user-icon-big.png"
       },
       createdAt: {
         allowNull: false,
