@@ -4,7 +4,7 @@ const {
   Validator
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Admin extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -14,23 +14,33 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  User.init({
-    username: {
+  Admin.init({
+    firstName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [4, 30],
-        isNotEmail(value) {
-          if (Validator.isEmail(value)) {
-            throw new Error('Cannot be an email.');
-          }
-        }
+        len: [0, 30]
+      }
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [0, 30]
+      }
+    },
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [0, 50]
       }
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
+        isEmail: true,
         len: [3, 256]
       }
     },
@@ -41,10 +51,13 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60]
       }
     },
-    profileImg: {
+    avatarImg: {
       type: DataTypes.STRING,
       allowNull: false,
-      defaultValue: ''
+      defaultValue: 'https://winaero.com/blog/wp-content/uploads/2018/08/Windows-10-user-icon-big.png',
+      validate: {
+        len: [5, 256]
+      }
     }
   }, {
     sequelize,
@@ -55,5 +68,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return User;
+  return Admin;
 };
