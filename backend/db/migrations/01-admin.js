@@ -15,6 +15,14 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      companyId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
+      schoolId: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+      },
       firstName: {
         type: Sequelize.STRING(30),
         allowNull: false,
@@ -22,6 +30,11 @@ module.exports = {
       lastName: {
         type: Sequelize.STRING(30),
         allowNull: false,
+      },
+      authorized: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
       },
       role: {
         type: Sequelize.STRING(50),

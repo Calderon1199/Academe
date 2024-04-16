@@ -15,6 +15,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Admin.init({
+    companyId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    schoolId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -28,6 +36,11 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [0, 30]
       }
+    },
+    authorized: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
     },
     role: {
       type: DataTypes.STRING,
@@ -51,7 +64,7 @@ module.exports = (sequelize, DataTypes) => {
         len: [60, 60]
       }
     },
-    avatarImg: {
+    avatarUrl: {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: 'https://winaero.com/blog/wp-content/uploads/2018/08/Windows-10-user-icon-big.png',
