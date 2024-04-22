@@ -18,7 +18,6 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 1,
                 email: 'parent@user.io',
                 firstName: 'Nailea',
                 lastName: 'Vidrio',
@@ -27,7 +26,6 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 2,
                 email: 'parent2@user.io',
                 firstName: 'Julian',
                 lastName: 'Morgan',
@@ -36,7 +34,6 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 3,
                 email: 'parent3@user.io',
                 firstName: 'Aiden',
                 lastName: 'Green',
@@ -45,7 +42,6 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 4,
                 email: 'parent4@user.io',
                 firstName: 'Alexander',
                 lastName: 'Vidrio',
@@ -54,7 +50,6 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 5,
                 email: 'parent5@user.io',
                 firstName: 'Nailea',
                 lastName: 'Ramirez',
@@ -63,7 +58,6 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 6,
                 email: 'parent6@user.io',
                 firstName: 'Carter',
                 lastName: 'Scott',
@@ -72,7 +66,6 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 7,
                 email: 'parent7@user.io',
                 firstName: 'Anthony',
                 lastName: 'Hernandez',
@@ -81,7 +74,6 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 8,
                 email: 'parent8@user.io',
                 firstName: 'Aiden',
                 lastName: 'Mitchell',
@@ -90,7 +82,6 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 9,
                 email: 'parent9@user.io',
                 firstName: 'Nailea',
                 lastName: 'Green',
@@ -99,7 +90,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 10,
+
                 email: 'parent10@user.io',
                 firstName: 'Grayson',
                 lastName: 'Harris',
@@ -108,7 +99,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 11,
+
                 email: 'parent11@user.io',
                 firstName: 'Noah',
                 lastName: 'Lee',
@@ -117,7 +108,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 12,
+
                 email: 'parent12@user.io',
                 firstName: 'Anthony',
                 lastName: 'Rivera',
@@ -126,7 +117,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 13,
+
                 email: 'parent13@user.io',
                 firstName: 'Isaac',
                 lastName: 'Nguyen',
@@ -135,7 +126,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 14,
+
                 email: 'parent14@user.io',
                 firstName: 'Ethan',
                 lastName: 'Nguyen',
@@ -144,7 +135,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 15,
+
                 email: 'parent15@user.io',
                 firstName: 'Emma',
                 lastName: 'Thompson',
@@ -153,7 +144,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 16,
+
                 email: 'parent16@user.io',
                 firstName: 'Grayson',
                 lastName: 'Rodriguez',
@@ -162,7 +153,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 17,
+
                 email: 'parent17@user.io',
                 firstName: 'Sophia',
                 lastName: 'Rivera',
@@ -171,7 +162,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 18,
+
                 email: 'parent18@user.io',
                 firstName: 'Joseph',
                 lastName: 'White',
@@ -180,7 +171,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 19,
+
                 email: 'parent19@user.io',
                 firstName: 'Mason',
                 lastName: 'Lewis',
@@ -189,7 +180,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 20,
+
                 email: 'parent20@user.io',
                 firstName: 'Mason',
                 lastName: 'Adams',
@@ -198,7 +189,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 21,
+
                 email: 'parent21@user.io',
                 firstName: 'Anthony',
                 lastName: 'Adams',
@@ -207,7 +198,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 22,
+
                 email: 'parent22@user.io',
                 firstName: 'Samuel',
                 lastName: 'Anderson',
@@ -216,7 +207,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 23,
+
                 email: 'parent23@user.io',
                 firstName: 'Noah',
                 lastName: 'Baker',
@@ -225,7 +216,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 24,
+
                 email: 'parent24@user.io',
                 firstName: 'Carter',
                 lastName: 'Scott',
@@ -234,7 +225,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 25,
+
                 email: 'parent25@user.io',
                 firstName: 'Joseph',
                 lastName: 'Perez',
@@ -243,7 +234,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 26,
+
                 email: 'parent26@user.io',
                 firstName: 'Grayson',
                 lastName: 'Stewart',
@@ -252,7 +243,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 27,
+
                 email: 'parent27@user.io',
                 firstName: 'Isabella',
                 lastName: 'Ramirez',
@@ -261,7 +252,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 28,
+
                 email: 'parent28@user.io',
                 firstName: 'Wyatt',
                 lastName: 'Harris',
@@ -270,7 +261,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 29,
+
                 email: 'parent29@user.io',
                 firstName: 'Nailea',
                 lastName: 'King',
@@ -279,7 +270,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 30,
+
                 email: 'parent30@user.io',
                 firstName: 'Grayson',
                 lastName: 'Lee',
@@ -288,7 +279,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 31,
+
                 email: 'parent31@user.io',
                 firstName: 'Anthony',
                 lastName: 'Anderson',
@@ -297,7 +288,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 32,
+
                 email: 'parent32@user.io',
                 firstName: 'Isaac',
                 lastName: 'Baker',
@@ -306,7 +297,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 33,
+
                 email: 'parent33@user.io',
                 firstName: 'Elijah',
                 lastName: 'Vidrio',
@@ -315,7 +306,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 34,
+
                 email: 'parent34@user.io',
                 firstName: 'Isaac',
                 lastName: 'Rogers',
@@ -324,7 +315,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 35,
+
                 email: 'parent35@user.io',
                 firstName: 'Isabella',
                 lastName: 'Hall',
@@ -333,7 +324,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 36,
+
                 email: 'parent36@user.io',
                 firstName: 'Jackson',
                 lastName: 'Stewart',
@@ -342,7 +333,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 37,
+
                 email: 'parent37@user.io',
                 firstName: 'Owen',
                 lastName: 'Wilson',
@@ -351,7 +342,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 38,
+
                 email: 'parent38@user.io',
                 firstName: 'Ethan',
                 lastName: 'Robinson',
@@ -360,7 +351,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 39,
+
                 email: 'parent39@user.io',
                 firstName: 'Ava',
                 lastName: 'Roberts',
@@ -369,7 +360,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 40,
+
                 email: 'parent40@user.io',
                 firstName: 'Olivia',
                 lastName: 'Perez',
@@ -378,7 +369,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 41,
+
                 email: 'parent41@user.io',
                 firstName: 'William',
                 lastName: 'Taylor',
@@ -387,7 +378,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 42,
+
                 email: 'parent42@user.io',
                 firstName: 'Sebastian',
                 lastName: 'Phillips',
@@ -396,7 +387,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 43,
+
                 email: 'parent43@user.io',
                 firstName: 'Jackson',
                 lastName: 'Campbell',
@@ -405,7 +396,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 44,
+
                 email: 'parent44@user.io',
                 firstName: 'Daniel',
                 lastName: 'Wright',
@@ -414,7 +405,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 45,
+
                 email: 'parent45@user.io',
                 firstName: 'Alexander',
                 lastName: 'Morgan',
@@ -423,7 +414,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 46,
+
                 email: 'parent46@user.io',
                 firstName: 'Henry',
                 lastName: 'Clark',
@@ -432,7 +423,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 47,
+
                 email: 'parent47@user.io',
                 firstName: 'Grayson',
                 lastName: 'Sanchez',
@@ -441,7 +432,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 48,
+
                 email: 'parent48@user.io',
                 firstName: 'Gabriel',
                 lastName: 'Miller',
@@ -450,7 +441,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 49,
+
                 email: 'parent49@user.io',
                 firstName: 'Jackson',
                 lastName: 'Thompson',
@@ -459,7 +450,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 50,
+
                 email: 'parent50@user.io',
                 firstName: 'Julian',
                 lastName: 'Nguyen',
@@ -468,7 +459,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 51,
+
                 email: 'parent51@user.io',
                 firstName: 'Isabella',
                 lastName: 'Garcia',
@@ -477,7 +468,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 52,
+
                 email: 'parent52@user.io',
                 firstName: 'Jacob',
                 lastName: 'Flores',
@@ -486,7 +477,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 53,
+
                 email: 'parent53@user.io',
                 firstName: 'Aiden',
                 lastName: 'Rivera',
@@ -495,7 +486,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 54,
+
                 email: 'parent54@user.io',
                 firstName: 'Samuel',
                 lastName: 'Brown',
@@ -504,7 +495,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 55,
+
                 email: 'parent55@user.io',
                 firstName: 'Wyatt',
                 lastName: 'Stewart',
@@ -513,7 +504,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 56,
+
                 email: 'parent56@user.io',
                 firstName: 'Henry',
                 lastName: 'Martin',
@@ -522,7 +513,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 57,
+
                 email: 'parent57@user.io',
                 firstName: 'Gabriel',
                 lastName: 'Phillips',
@@ -531,7 +522,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 58,
+
                 email: 'parent58@user.io',
                 firstName: 'Luke',
                 lastName: 'Thompson',
@@ -540,7 +531,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 59,
+
                 email: 'parent59@user.io',
                 firstName: 'Henry',
                 lastName: 'Miller',
@@ -549,7 +540,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 60,
+
                 email: 'parent60@user.io',
                 firstName: 'David',
                 lastName: 'Lee',
@@ -558,7 +549,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 61,
+
                 email: 'parent61@user.io',
                 firstName: 'Anthony',
                 lastName: 'Parker',
@@ -567,7 +558,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 62,
+
                 email: 'parent62@user.io',
                 firstName: 'Dylan',
                 lastName: 'Davis',
@@ -576,7 +567,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 63,
+
                 email: 'parent63@user.io',
                 firstName: 'Gabriel',
                 lastName: 'Morgan',
@@ -585,7 +576,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 64,
+
                 email: 'parent64@user.io',
                 firstName: 'Carter',
                 lastName: 'Adams',
@@ -594,7 +585,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 65,
+
                 email: 'parent65@user.io',
                 firstName: 'Wyatt',
                 lastName: 'Gonzalez',
@@ -603,7 +594,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 66,
+
                 email: 'parent66@user.io',
                 firstName: 'Nailea',
                 lastName: 'King',
@@ -612,7 +603,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 67,
+
                 email: 'parent67@user.io',
                 firstName: 'Julian',
                 lastName: 'Lee',
@@ -621,7 +612,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 68,
+
                 email: 'parent68@user.io',
                 firstName: 'William',
                 lastName: 'Nelson',
@@ -630,7 +621,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 69,
+
                 email: 'parent69@user.io',
                 firstName: 'Benjamin',
                 lastName: 'Turner',
@@ -639,7 +630,7 @@ module.exports = {
             {
                 companyId: 1,
                 schoolId: 1,
-                studentId: 70,
+
                 email: 'parent70@user.io',
                 firstName: 'Isaac',
                 lastName: 'Hernandez',

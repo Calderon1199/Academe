@@ -1,7 +1,7 @@
 'use strict';
 
 let options = {};
-options.tableName = 'Parents';
+options.tableName = 'Students';
 if (process.env.NODE_ENV === 'production') {
     options.schema = process.env.SCHEMA;  // define your schema in options object
 }
@@ -14,6 +14,17 @@ module.exports = {
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
+            },
+            parentId: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
+                references: {
+                    model: {
+                        tableName: 'Parents',
+                        schema: options.schema
+                    },
+                    key: 'id'
+                },
             },
             companyId: {
                 type: Sequelize.INTEGER,
@@ -37,11 +48,6 @@ module.exports = {
                     key: 'id'
                 },
             },
-            avatarUrl: {
-                type: Sequelize.STRING(256),
-                allowNull: false,
-                defaultValue: "https://winaero.com/blog/wp-content/uploads/2018/08/Windows-10-user-icon-big.png"
-            },
             firstName: {
                 type: Sequelize.STRING(30),
                 allowNull: false,
@@ -50,23 +56,13 @@ module.exports = {
                 type: Sequelize.STRING(30),
                 allowNull: false,
             },
+            grade: {
+                type: Sequelize.INTEGER,
+                allowNull: false
+            },
             strikes: {
                 type: Sequelize.INTEGER,
                 defaultValue: 0,
-                allowNull: false
-            },
-            authorized: {
-                type: Sequelize.BOOLEAN,
-                allowNull: false,
-                defaultValue: false
-            },
-            email: {
-                type: Sequelize.STRING(256),
-                allowNull: false,
-                unique: true
-            },
-            hashedPassword: {
-                type: Sequelize.STRING.BINARY,
                 allowNull: false
             },
             createdAt: {

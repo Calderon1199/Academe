@@ -1,7 +1,7 @@
 'use strict';
 
 let options = {};
-options.tableName = 'Students';
+options.tableName = 'Schools';
 if (process.env.NODE_ENV === 'production') {
     options.schema = process.env.SCHEMA;  // define your schema in options object
 }
@@ -15,34 +15,41 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            parentId: {
-                type: Sequelize.INTEGER,
-                allowNull: true
-            },
             companyId: {
                 type: Sequelize.INTEGER,
-                allowNull: false
-            },
-            schoolId: {
-                type: Sequelize.INTEGER,
-                allowNull: false
-            },
-            firstName: {
-                type: Sequelize.STRING(30),
                 allowNull: false,
+                references: {
+                    model: {
+                        tableName: 'Companys',
+                        schema: options.schema
+                    },
+                    key: 'id'
+                },
             },
-            lastName: {
-                type: Sequelize.STRING(30),
+            name: {
+                type: Sequelize.STRING,
+                allowNull: false
+            },
+            phoneNumber: {
+                type: Sequelize.STRING(10),
+                allowNull: false
+            },
+            address: {
+                type: Sequelize.STRING(100),
+                allowNull: false
+            },
+            state: {
+                type: Sequelize.STRING(2),
+                allowNull: false
+            },
+            zipcode: {
+                type: Sequelize.STRING(10),
+                allowNull: false
+            },
+            logo: {
+                type: Sequelize.STRING,
                 allowNull: false,
-            },
-            grade: {
-                type: Sequelize.INTEGER,
-                allowNull: false
-            },
-            strikes: {
-                type: Sequelize.INTEGER,
-                defaultValue: 0,
-                allowNull: false
+                defaultValue: "https://img.freepik.com/free-vector/colorful-letter-gradient-logo-design_474888-2309.jpg"
             },
             createdAt: {
                 allowNull: false,
