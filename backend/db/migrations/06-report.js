@@ -1,7 +1,7 @@
 'use strict';
 
 let options = {};
-options.tableName = 'Schools';
+options.tableName = 'Reports';
 if (process.env.NODE_ENV === 'production') {
     options.schema = process.env.SCHEMA;  // define your schema in options object
 }
@@ -15,43 +15,39 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
+            studentId: {
+                type: Sequelize.INTEGER,
+                allowNull: false
+            },
+            parentId: {
+                type: Sequelize.INTEGER,
+                allowNull: true,
+            },
             companyId: {
                 type: Sequelize.INTEGER,
                 allowNull: false
             },
-            name: {
-                type: Sequelize.STRING,
+            hwCompletion: {
+                type: Sequelize.BOOLEAN,
+                defaultValue: false,
                 allowNull: false
             },
-            phoneNumber: {
-                type: Sequelize.STRING(10),
-                allowNull: false
+            notes: {
+                type: Sequelize.TEXT,
+                allowNull: true
             },
-            address: {
-                type: Sequelize.STRING(100),
+            behaviorScore: {
+                type: Sequelize.INTEGER,
                 allowNull: false
-            },
-            state: {
-                type: Sequelize.STRING(2),
-                allowNull: false
-            },
-            zipcode: {
-                type: Sequelize.STRING(10),
-                allowNull: false
-            },
-            logo: {
-                type: Sequelize.STRING,
-                allowNull: false,
-                defaultValue: "https://img.freepik.com/free-vector/colorful-letter-gradient-logo-design_474888-2309.jpg"
             },
             createdAt: {
-                allowNull: false,
                 type: Sequelize.DATE,
+                allowNull: false,
                 defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
             },
             updatedAt: {
-                allowNull: false,
                 type: Sequelize.DATE,
+                allowNull: false,
                 defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
             }
         }, options);

@@ -1,6 +1,6 @@
 'use strict';
 
-const { Company, Sequelize } = require('../models');
+const { School, Sequelize } = require('../models');
 const bcrypt = require('bcryptjs');
 
 
@@ -18,6 +18,7 @@ module.exports = {
             {
                 name: 'Elk Grove Elementary School',
                 phoneNumber: '9162384938',
+                companyId: 1,
                 address: '3903 Richards blvd',
                 state: 'CA',
                 zipcode: '95624',
@@ -25,6 +26,7 @@ module.exports = {
             {
                 name: 'Pleasant Grove Elementary School',
                 phoneNumber: '2098285312',
+                companyId: 1,
                 address: '9173 Ellie Ranch Dr',
                 state: 'CA',
                 zipcode: '95624',
@@ -32,6 +34,7 @@ module.exports = {
             {
                 name: 'Franklin Elementary School',
                 phoneNumber: '5092187711',
+                companyId: 1,
                 address: '4413 Poppy street',
                 state: 'CA',
                 zipcode: '95624',
