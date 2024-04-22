@@ -11,21 +11,44 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+            Report.belongsTo(models.Parent, { foreignKey: 'parentId', sourceKey: 'id' });
+            Report.belongsTo(models.Student, { foreignKey: 'studentId', sourceKey: 'id' });
+            Report.belongsTo(models.Admin, { foreignKey: 'AdminId', sourceKey: 'id' });
+            Report.belongsTo(models.Company, { foreignKey: "companyId", sourceKey: 'id' });
         }
     }
     Report.init({
         studentId: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            references: {
+                model: 'Students',
+                key: 'id'
+            }
         },
         parentId: {
             type: DataTypes.INTEGER,
             allowNull: true,
+            references: {
+                model: 'Parents',
+                key: 'id'
+            }
+        },
+        adminId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'Admins',
+                key: 'id'
+            }
         },
         companyId: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            references: {
+                model: 'Companys',
+                key: 'id'
+            }
         },
         hwCompletion: {
             type: DataTypes.BOOLEAN,

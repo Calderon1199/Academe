@@ -12,21 +12,28 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
-            // define association here
+            Parent.hasMany(models.Report, {foreignKey: 'parentId', sourceKey: 'id' });
+            Parent.hasMany(models.Student, { foreignKey: 'studentId', sourceKey: 'id' });
+            Parent.belongsTo(models.School, { foreignKey: 'schoolId', sourceKey: 'id' });
+            Parent.belongsTo(models.Company, { foreignKey: 'companyId', sourceKey: 'id' });
         }
     }
     Parent.init({
         companyId: {
             type: DataTypes.INTEGER,
             allowNull: false,
+            references: {
+                model: 'Companys',
+                key: 'id'
+            }
         },
         schoolId: {
             type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        studentId: {
-            type: DataTypes.INTEGER,
             allowNull: false,
+            references: {
+                model: 'Schools',
+                key: 'id'
+            }
         },
         avatarUrl: {
             type: DataTypes.STRING(256),

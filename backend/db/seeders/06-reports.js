@@ -17,6 +17,7 @@ module.exports = {
         return queryInterface.bulkInsert(options, [
             {
                 studentId: 1,
+                adminId: 1,
                 parentId: 1,
                 companyId: 1,
                 hwCompletion: false,
@@ -25,6 +26,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                adminId: 1,
                 parentId: 1,
                 companyId: 1,
                 hwCompletion: true,
@@ -33,6 +35,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                adminId: 1,
                 parentId: 1,
                 companyId: 1,
                 hwCompletion: false,
@@ -41,6 +44,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                adminId: 1,
                 parentId: 1,
                 companyId: 1,
                 hwCompletion: true,
@@ -49,6 +53,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                adminId: 1,
                 parentId: 1,
                 companyId: 1,
                 hwCompletion: false,
@@ -57,6 +62,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                adminId: 1,
                 parentId: 1,
                 companyId: 1,
                 hwCompletion: true,
@@ -65,6 +71,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                adminId: 1,
                 parentId: 1,
                 companyId: 1,
                 hwCompletion: false,
@@ -73,6 +80,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                adminId: 1,
                 parentId: 1,
                 companyId: 1,
                 hwCompletion: true,
@@ -81,6 +89,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                adminId: 1,
                 parentId: 1,
                 companyId: 1,
                 hwCompletion: false,
@@ -89,6 +98,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                adminId: 1,
                 parentId: 1,
                 companyId: 1,
                 hwCompletion: true,
@@ -97,6 +107,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                adminId: 1,
                 parentId: 2,
                 companyId: 1,
                 hwCompletion: false,
@@ -105,6 +116,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                adminId: 1,
                 parentId: 2,
                 companyId: 1,
                 hwCompletion: true,
@@ -113,6 +125,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                adminId: 1,
                 parentId: 2,
                 companyId: 1,
                 hwCompletion: false,
@@ -121,6 +134,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                adminId: 1,
                 parentId: 2,
                 companyId: 1,
                 hwCompletion: true,
@@ -129,6 +143,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                adminId: 1,
                 parentId: 2,
                 companyId: 1,
                 hwCompletion: false,
@@ -137,6 +152,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                adminId: 1,
                 parentId: 2,
                 companyId: 1,
                 hwCompletion: true,
@@ -145,6 +161,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                adminId: 1,
                 parentId: 2,
                 companyId: 1,
                 hwCompletion: false,
@@ -153,6 +170,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                adminId: 1,
                 parentId: 2,
                 companyId: 1,
                 hwCompletion: true,
@@ -161,6 +179,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                adminId: 1,
                 parentId: 2,
                 companyId: 1,
                 hwCompletion: false,
@@ -169,6 +188,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                adminId: 1,
                 parentId: 2,
                 companyId: 1,
                 hwCompletion: true,

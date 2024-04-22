@@ -17,15 +17,47 @@ module.exports = {
             },
             studentId: {
                 type: Sequelize.INTEGER,
-                allowNull: false
+                allowNull: false,
+                references: {
+                    model: {
+                        tableName: 'Students',
+                        schema: options.schema
+                    },
+                    key: 'id'
+                },
             },
             parentId: {
                 type: Sequelize.INTEGER,
                 allowNull: true,
+                references: {
+                    model: {
+                        tableName: 'Parents',
+                        schema: options.schema
+                    },
+                    key: 'id'
+                },
             },
             companyId: {
                 type: Sequelize.INTEGER,
-                allowNull: false
+                allowNull: false,
+                references: {
+                    model: {
+                        tableName: 'Companys',
+                        schema: options.schema
+                    },
+                    key: 'id'
+                },
+            },
+            adminId: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: {
+                        tableName: 'Admins',
+                        schema: options.schema
+                    },
+                    key: 'id'
+                },
             },
             hwCompletion: {
                 type: Sequelize.BOOLEAN,

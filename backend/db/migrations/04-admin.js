@@ -17,11 +17,25 @@ module.exports = {
       },
       companyId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: {
+            tableName: 'Companys',
+            schema: options.schema
+          },
+          key: 'id'
+        },
       },
       schoolId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: {
+          model: {
+            tableName: 'Schools',
+            schema: options.schema
+          },
+          key: 'id'
+        },
       },
       firstName: {
         type: Sequelize.STRING(30),
