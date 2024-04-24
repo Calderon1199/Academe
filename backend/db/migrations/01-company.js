@@ -21,7 +21,8 @@ module.exports = {
             },
             phoneNumber: {
                 type: Sequelize.STRING(10),
-                allowNull: false
+                allowNull: false,
+                unique: true
             },
             address: {
                 type: Sequelize.STRING(100),
