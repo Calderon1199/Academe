@@ -72,6 +72,22 @@ module.exports = (sequelize, DataTypes) => {
                 len: [3, 256]
             }
         },
+        phoneNumber: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+            validate: {
+                len: [10,10]
+            }
+        },
+        studentRelation: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                len: [3, 15]
+            }
+
+        },
         hashedPassword: {
             type: DataTypes.STRING.BINARY,
             allowNull: false,

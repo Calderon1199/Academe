@@ -59,6 +59,11 @@ module.exports = {
         allowNull: false,
         unique: true
       },
+      phoneNumber: {
+        type: Sequelize.STRING(10),
+        allowNull: false,
+        unique: true
+      },
       hashedPassword: {
         type: Sequelize.STRING.BINARY,
         allowNull: false
