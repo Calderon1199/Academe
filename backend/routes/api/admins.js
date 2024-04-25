@@ -15,12 +15,18 @@ const validateAdminSignup = [
         .withMessage('Please provide a valid email.'),
     check('firstName')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a first name.'),
+        .withMessage('Please provide a first name.')
+        .isLength({ min: 2, max: 30 })
+        .withMessage('First name must be between 2 and 30 characters.'),
     check('lastName')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a last name.'),
+        .withMessage('Please provide a last name.')
+        .isLength({ min: 2, max: 30})
+        .withMessage('Last name must be between 2 and 30 characters.'),
     check('phoneNumber')
         .exists({ checkFalsy: true })
+        .isNumeric()
+        .isLength({ min: 10, max: 10})
         .withMessage('Please provide a valid phone number.'),
     check('companyId')
         .exists({ checkFalsy: true })

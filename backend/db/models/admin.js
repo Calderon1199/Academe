@@ -37,14 +37,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [0, 30]
+        len: [2, 30]
       }
     },
     lastName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [0, 30]
+        len: [2, 30]
       }
     },
     authorized: {
@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [0, 50]
+        len: [3, 50]
       }
     },
     email: {
@@ -64,7 +64,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         isEmail: true,
-        len: [3, 256]
+        len: [5, 256]
       }
     },
     phoneNumber: {
@@ -72,7 +72,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
       validate: {
-        len: [10, 10]
+        len: [10, 10],
+        isNumeric: true
       }
     },
     hashedPassword: {
