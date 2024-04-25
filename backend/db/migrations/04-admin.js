@@ -28,7 +28,7 @@ module.exports = {
       },
       schoolId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: {
             tableName: 'Schools',
