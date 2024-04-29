@@ -25,28 +25,33 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             unique: true,
             validate: {
-                len: [10, 10]
+                len: [10, 10],
+                isNumeric: true,
             }
         },
         address: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
-                len: [0, 100]
+                len: [0, 100],
+                isAlphanumeric: true
             }
         },
         state: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [0, 2]
+                len: [0, 2],
+                isAlpha: true
             }
         },
         zipcode: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [5, 10]
+                len: [5, 10],
+                isNumeric: true
             }
         },
         logo: {
