@@ -46,12 +46,21 @@ export const thunkLogin = (credentials) => async dispatch => {
     }
 };
 
-export const thunkSignup = (user) => async (dispatch) => {
-    const response = await csrfFetch("/api/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user)
-    });
+export const thunkSignup = (user, userType) => async (dispatch) => {
+    let response;
+    if (userType === 'admin') {
+        response = await csrfFetch("/api/users", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user)
+        });
+    } else {
+        response = await csrfFetch("/api/parents", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user)
+        });
+    }
 
     if (response.ok) {
         const data = await response.json();

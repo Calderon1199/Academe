@@ -42,7 +42,7 @@ module.exports = {
         allowNull: false,
       },
       lastName: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
       authorized: {

@@ -51,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [0, 30]
+                len: [0, 50]
             }
         },
         strikes: {
@@ -69,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             validate: {
                 isEmail: true,
-                len: [3, 256]
+                len: [5, 256]
             }
         },
         phoneNumber: {
@@ -77,7 +77,8 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             unique: true,
             validate: {
-                len: [10,10]
+                len: [10,10],
+                isNumeric: true
             }
         },
         studentRelation: {
@@ -95,14 +96,6 @@ module.exports = (sequelize, DataTypes) => {
                 len: [60, 60]
             }
         },
-        avatarImg: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            defaultValue: 'https://winaero.com/blog/wp-content/uploads/2018/08/Windows-10-user-icon-big.png',
-            validate: {
-                len: [5, 256]
-            }
-        }
     }, {
         sequelize,
         modelName: 'Parent',
