@@ -10,6 +10,7 @@ function SignupFormModal() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [studentRelation, setStudentRelation] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -32,8 +33,10 @@ function SignupFormModal() {
         lastName,
         phoneNumber,
         companyId: 1,
+        schoolId: 1,
+        studentRelation: 'Father',
         password,
-      })
+      }, 'parent')
     );
 
     if (serverResponse) {
@@ -84,6 +87,16 @@ function SignupFormModal() {
             type="text"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
+            required
+          />
+        </label>
+        {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
+        <label>
+          studentRelation
+          <input
+            type="text"
+            value={studentRelation}
+            onChange={(e) => setStudentRelation(e.target.value)}
             required
           />
         </label>

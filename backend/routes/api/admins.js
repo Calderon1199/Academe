@@ -21,8 +21,8 @@ const validateAdminSignup = [
     check('lastName')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a last name.')
-        .isLength({ min: 2, max: 30})
-        .withMessage('Last name must be between 2 and 30 characters.'),
+        .isLength({ min: 2, max: 50})
+        .withMessage('Last name must be between 2 and 50 characters.'),
     check('phoneNumber')
         .exists({ checkFalsy: true })
         .isNumeric()
