@@ -1,3 +1,90 @@
 .profile-dropdown {
     position: absolute;
 }
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    align-items: center;
+}
+
+
+#nav-logo img{
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+#admin-button {
+    /* background: linear-gradient(to right, #F17C35,#E2336e); */
+    /* box-shadow: 0px 5px 7px rgb(47, 47, 47); */
+    background: none;
+    background-color: white;
+    font-size: 15px;
+    color: #2F8AFA;
+    font-weight: 700;
+    width: 100px;
+    height: 35px;
+    border: none;
+    border: 2px solid #2F8AFA;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#admin-button:hover {
+    box-shadow: 0px 0px 7px rgb(186, 186, 186);
+}
+
+#parent-button:hover {
+    box-shadow: 0px 0px 7px rgb(186, 186, 186);
+}
+
+#parent-button {
+    background: none;
+    background-color: #2F8AFA;
+    color: white;
+    /* box-shadow: 0px 5px 7px rgb(47, 47, 47); */
+    font-size: 16px;
+    font-weight: 700;
+    width: 100px;
+    height: 35px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.links2{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20%;
+    font-weight: 700;
+    width: 45%;
+    text-decoration: none;
+    color: black;
+}
+
+.links2 li a{
+    list-style: none;
+    text-decoration: none;
+    color: black;
+}
+
+.links2 li a:hover {
+    display: inline;
+        text-decoration: none;
+        background-image: linear-gradient(transparent, transparent), linear-gradient(transparent, transparent), linear-gradient(to right, #0087F8, #00FC83);
+        background-repeat: no-repeat;
+        background-position: 120%, 122%, 0 165%;
+        background-size: 100% 10px;
+}
+/* #F17C35,
+#E2336e,
+#35c9ff,
+#27d853 */
