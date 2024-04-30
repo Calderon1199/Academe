@@ -1,9 +1,42 @@
 import React from 'react';
+import './Splash.css';
 
 const Splash = () => {
   return (
-    <div>
-        <h1>Welcome To Capstone Express Starter</h1>
+    <div className='homepage'>
+        <div className='homepage-intro'>
+          <div className='homepage-intro-header'>
+            <h1>Welcome to Academe!</h1>
+            <p>Academe is a simple tool to keep track of
+              <br></br>your child's educational progress and behavior</p>
+          </div>
+          <div className='academe-logo-big'>
+            <img src='../../public/assets/logo.jpg'></img>
+          </div>
+        </div>
+        <div className='info'>
+          <div className='info-header'>
+            <h3>What we do</h3>
+            <p>Academe is software that can be used to track a students academic progress and behavior. A parent can view their student's portal as well as receive feedback from teachers.</p>
+          </div>
+          <div className='info-cards'>
+            <div className='info-card'>
+              <h2>Homework Tracker</h2>
+              <img></img>
+              <p>Student homework completion can be displayed within the past 12 months.</p>
+            </div>
+            <div className='info-card'>
+              <h2>Behavior Tracker</h2>
+              <img></img>
+              <p>Student behavior, warnings, incident reports, teacher notes can all be reviewed in the parent portal.</p>
+            </div>
+            <div className='info-card'>
+              <h2>Take control as an administrator</h2>
+              <img></img>
+              <p>Review and edit a student's progress instantly!</p>
+            </div>
+          </div>
+        </div>
     </div>
   );
 }

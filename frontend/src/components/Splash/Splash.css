@@ -1,0 +1,43 @@
+.homepage {
+    margin: 0 10%;
+}
+
+.homepage-intro {
+    margin: 0 auto;
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+    height: 75vh;
+}
+
+.academe-logo-big {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.academe-logo-big img{
+    width: 70%;
+    height: auto;
+}
+
+.info-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-header p {
+    width: 50%;
+}
+
+
+.info-cards {
+    display: flex;
+    gap: 30px;
+}
+
+.info-card {
+    width: 50%;
+}
