@@ -6,9 +6,12 @@ const Splash = () => {
     <div className='homepage'>
         <div className='homepage-intro'>
           <div className='homepage-intro-header'>
-            <h1>Welcome to Academe!</h1>
-            <p>Academe is a simple tool to keep track of
-              <br></br>your child's educational progress and behavior</p>
+            <h1>Empower Parents, Elevate Education.</h1>
+            <h2>Track, Monitor, and Nurture Your Child's Journey with Ease.</h2>
+            <div className='homepage-intro-buttons'>
+              <button id='join-button'>Join for free</button>
+              <button id='learn-more-button'>Learn more</button>
+            </div>
           </div>
           <div className='academe-logo-big'>
             <img src='../../public/assets/logo.jpg'></img>
