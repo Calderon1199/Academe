@@ -6,6 +6,7 @@ import "./SignupForm.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
+  const [accountType, setAccountType] = useState('parent');
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -25,7 +26,6 @@ function SignupFormModal() {
           "Confirm Password field must be the same as the Password field",
       });
     }
-
     const serverResponse = await dispatch(
       thunkSignup({
         email,
@@ -47,8 +47,14 @@ function SignupFormModal() {
   };
 
   return (
-    <>
-      <h1>Sign Up</h1>
+    <div>
+      <div>
+        <h1>Register</h1>
+        <h2>Choose your account</h2>
+        <div>
+          <button>Admin</button>
+          <button>Parent</button>
+        </div>
       {errors.server && <p>{errors.server}</p>}
       <form onSubmit={handleSubmit}>
         <label>
@@ -91,16 +97,18 @@ function SignupFormModal() {
           />
         </label>
         {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
-        <label>
-          studentRelation
-          <input
-            type="text"
-            value={studentRelation}
-            onChange={(e) => setStudentRelation(e.target.value)}
-            required
-          />
-        </label>
-        {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
+        {accountType !== 'admin' && (
+          <label>
+            studentRelation
+            <input
+              type="text"
+              value={studentRelation}
+              onChange={(e) => setStudentRelation(e.target.value)}
+              required
+            />
+          {errors.studentRelation && <p>{errors.studentRelation}</p>}
+          </label>
+        )}
         <label>
           Password
           <input
@@ -123,7 +131,8 @@ function SignupFormModal() {
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         <button type="submit">Sign Up</button>
       </form>
-    </>
+        </div>
+    </div>
   );
 }
 
