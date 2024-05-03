@@ -3,16 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 import { thunkSignup } from "../../redux/session";
 import "./SignupForm.css";
+import CompanyForm from "./CompanyForm";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const sessionUser = useSelector((state) => state.session.user);
+  const [accountType, setAccountType] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [studentRelation, setStudentRelation] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
 
@@ -46,19 +50,22 @@ function SignupFormPage() {
   return (
     <div className="signup-form-page">
       <div className="signup-form-background">
-        <img src="../../public/assets/bg1.jpg" alt="Abstract Background"></img>
+        <img src="../../public/assets/logo.jpg" alt="Abstract Background"></img>
       </div>
       <div className="signup-form-side">
         <h1>Registration</h1>
         <h3>Choose your account type</h3>
-        <div>
-          <button>Company</button>
-          <button>Admin</button>
-          <button>Parent</button>
+        <div className="account-type-buttons">
+          <button onClick={() => setAccountType('company')}>Company <i class="fa-regular fa-building"></i></button>
+          <button onClick={() => setAccountType('admin')}>Admin <i class="fa-solid fa-user-tie"></i></button>
+          <button onClick={() => setAccountType('parent')}>Parent <i class="fa-regular fa-user"></i></button>
         </div>
         {errors.server && <p>{errors.server}</p>}
-        <form onSubmit={handleSubmit} className="signup-form">
-          <div>
+        {accountType === 'company' ? (
+          < CompanyForm />
+        ): (
+          <form onSubmit={handleSubmit} className="signup-form">
+          <div className="signup-info-grid">
             <label>
             First Name
             <input
@@ -67,18 +74,38 @@ function SignupFormPage() {
               onChange={(e) => setFirstName(e.target.value)}
               required
             />
-          </label>
-          {errors.firstName && <p>{errors.firstName}</p>}
-          <label>
-            Last Name
+            </label>
+            {errors.firstName && <p>{errors.firstName}</p>}
+            <label>
+              Last Name
+              <input
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </label>
+            {errors.lastName && <p>{errors.lastName}</p>}
+            <label>
+            Phone Number
             <input
               type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
               required
             />
-          </label>
-          {errors.lastName && <p>{errors.lastName}</p>}
+            </label>
+            {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
+            <label>
+              Student relation
+              <input
+                type="text"
+                value={studentRelation}
+                onChange={(e) => setStudentRelation(e.target.value)}
+                required
+              />
+            </label>
+            {errors.studentRelation && <p>{errors.studentRelation}</p>}
           </div>
           <label>
             Email
@@ -111,7 +138,7 @@ function SignupFormPage() {
           </label>
           {errors.password && <p>{errors.password}</p>}
           <label>
-            Confirm Password
+            Re-enter Password
             <input
               type="password"
               value={confirmPassword}
@@ -120,8 +147,9 @@ function SignupFormPage() {
             />
           </label>
           {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-          <button type="submit">Sign Up</button>
         </form>
+        )}
+          <button type="submit" className="signup-enter-button enabled">Submit</button>
       </div>
     </div>
   );
