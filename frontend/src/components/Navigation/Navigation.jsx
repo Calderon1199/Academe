@@ -1,9 +1,14 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate, useNavigate } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import { useSelector } from "react-redux";
+import { useModal } from "../../context/Modal";
+import SignupFormModal from "../SignupFormModal";
 
 function Navigation() {
+  const {setModalContent} = useModal();
+  const navigate = useNavigate()
+
   return (
     <ul className="nav-list">
       <li id="nav-logo">
@@ -27,7 +32,7 @@ function Navigation() {
 
       <li className="nav-buttons">
         <button id="admin-button">Log In</button>
-        <button id="parent-button">Sign Up</button>
+        <button id="parent-button" onClick={() => navigate('/signup')}>Sign Up</button>
       </li>
     </ul>
   );
