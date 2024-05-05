@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
+import { thunkSignup } from '../../../redux/session';
 
 function CompanyForm(accountType) {
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -12,40 +13,45 @@ function CompanyForm(accountType) {
     const [email, setEmail] = useState("");
     const [state, setState] = useState("");
     const [name, setName] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false); // New state to track form submission
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-
-
     const handleSubmit = async (e) => {
-    e.preventDefault();
+        e.preventDefault();
+        setIsSubmitting(true); // Set isSubmitting to true when form is submitted
 
-    if (password !== confirmPassword) {
-      return setErrors({
-        confirmPassword:
-          "Confirm Password field must be the same as the Password field",
-      });
-    }
+        if (password !== confirmPassword) {
+            setErrors({
+                confirmPassword: "Confirm Password field must be the same as the Password field",
+            });
+            setIsSubmitting(false); // Reset isSubmitting
+            return;
+        }
 
-    const serverResponse = await dispatch(
-      thunkSignup({
-          name,
-          phoneNumber,
-          address,
-          state,
-          zipcode,
-          email,
-          password
-      }, )
-    );
+        const serverResponse = await dispatch(
+            thunkSignup({
+                name,
+                phoneNumber,
+                address,
+                state,
+                zipcode,
+                email,
+                password
+            }, 'company')
+        );
 
-    if (serverResponse) {
-      setErrors(serverResponse);
-    } else {
-      navigate("/");
-    }
-  };
+
+        if (!serverResponse.ok) {
+                setErrors(serverResponse.errors)
+        } else {
+            setErrors({}); // Clear errors
+            navigate("/"); // Navigate to the desired page on successful submission
+        }
+
+        setIsSubmitting(false); // Reset isSubmitting after handling form submission
+    };
 
     return (
         <>
@@ -60,7 +66,7 @@ function CompanyForm(accountType) {
                 required
                 />
                 </label>
-                {errors.name && <p>{errors.name}</p>}
+                {errors?.name && <p>{errors?.name}</p>}
                 <label>
                 Phone Number
                 <input
@@ -70,7 +76,7 @@ function CompanyForm(accountType) {
                 required
                 />
                 </label>
-                {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
+                {errors?.phoneNumber && <p>{errors?.phoneNumber}</p>}
                 <label>
                 Address
                 <input
@@ -80,7 +86,7 @@ function CompanyForm(accountType) {
                 required
                 />
                 </label>
-                {errors.address && <p>{errors.address}</p>}
+                {errors?.address && <p>{errors?.address}</p>}
                 <label>
                 State
                 <input
@@ -90,7 +96,7 @@ function CompanyForm(accountType) {
                 required
                 />
                 </label>
-                {errors.state && <p>{errors.state}</p>}
+                {errors?.state && <p>{errors?.state}</p>}
                 <label>
                 Zipcode
                 <input
@@ -100,7 +106,7 @@ function CompanyForm(accountType) {
                 required
                 />
                 </label>
-                {errors.zipcode && <p>{errors.zipcode}</p>}
+                {errors?.zipcode && <p>{errors?.zipcode}</p>}
             </div>
             <label>
                 Email
@@ -111,7 +117,7 @@ function CompanyForm(accountType) {
                 required
                 />
             </label>
-            {errors.email && <p>{errors.email}</p>}
+            {errors?.email && <p>{errors?.email}</p>}
             <label>
                 Password
                 <input
@@ -121,7 +127,7 @@ function CompanyForm(accountType) {
                 required
                 />
             </label>
-            {errors.password && <p>{errors.password}</p>}
+            {errors?.password && <p>{errors?.password}</p>}
             <label>
                 Re-enter Password
                 <input
@@ -131,9 +137,9 @@ function CompanyForm(accountType) {
                 required
                 />
             </label>
-            {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+            {errors?.confirmPassword && <p>{errors?.confirmPassword}</p>}
             </form>
-            <button type="submit" onClick={() => handleSubmit(e)} className="signup-enter-button enabled">Submit</button>
+            <button type="submit" onClick={(e) => handleSubmit(e)} className="signup-enter-button enabled">Submit</button>
         </>
     );
 }

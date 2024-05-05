@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
     up: async (queryInterface, Sequelize) => {
-        options.tableName = "Companys";
+        options.tableName = "Companies";
         return queryInterface.bulkInsert(options, [
             {
                 name: 'Assist Programs',
@@ -48,7 +48,7 @@ module.exports = {
 
 
     down: async (queryInterface, Sequelize) => {
-        options.tableName = "Companys";
+        options.tableName = "Companies";
         return queryInterface.dropTable(options.tableName);
     }
 }

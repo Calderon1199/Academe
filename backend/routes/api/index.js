@@ -4,6 +4,7 @@ const { User } = require('../../db/models');
 const sessionRouter = require('./session.js');
 const adminRouter = require('./admins.js');
 const parentRouter = require('./parents.js');
+const companyRouter = require('./companies.js');
 
 
 //You can use requireAuth as middleware for routes that require sign in
@@ -14,11 +15,12 @@ router.use(restoreUser);
 router.use('/session', sessionRouter);
 router.use('/parents', parentRouter);
 router.use('/users', adminRouter);
+router.use('/business', companyRouter);
 
 
 // Restore user
 router.get('/restore-user', (req, res) => {
-    return res.json(req.admin);
+    return res.json(req.businessAdmin);
 });
 
 

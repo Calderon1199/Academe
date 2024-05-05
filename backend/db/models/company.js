@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
             Company.hasMany(models.School, { foreignKey: 'companyId', sourceKey: 'id' });
             Company.hasMany(models.Admin, { foreignKey: 'companyId', sourceKey: 'id' });
         }
+
+        static async findByEmail(email) {
+            return await this.findOne({ where: { email } });
+        }
     }
     Company.init({
         name: {
@@ -25,8 +29,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             unique: true,
             validate: {
-                len: [10, 10],
-                isNumeric: true,
+                len: [13, 13],
+                isPhoneNumber(number) {
+                    if (!/^[0-9()-]+$/.test(number)) {
+                        throw new Error('Phone number format: (***)***-****');
+                    }
+                }
             }
         },
         address: {
@@ -34,8 +42,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             unique: true,
             validate: {
-                len: [0, 100],
-                isAlphanumeric: true
+                len: [5, 100],
+                isAddress(value) {
+                    if (!/^[a-zA-Z0-9\s]*$/.test(value)) {
+                        throw new Error('Address format is incorrect');
+                    }
+                }
             }
         },
         state: {
