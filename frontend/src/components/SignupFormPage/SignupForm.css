@@ -8,7 +8,7 @@
 }
 
 .signup-form-background {
-    width: 70%;
+    width: 50%;
 }
 
 .signup-form-background img {
@@ -118,4 +118,15 @@
 
 .signup-enter-button.enabled:hover {
     background-color: #2772cf;
+}
+
+
+.company-signup-errors {
+    color: red;
+}
+
+.error-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

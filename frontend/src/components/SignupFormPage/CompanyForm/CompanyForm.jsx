@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import { thunkSignup } from '../../../redux/session';
 
-function CompanyForm(accountType) {
+function CompanyForm() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [password, setPassword] = useState("");
@@ -42,6 +42,8 @@ function CompanyForm(accountType) {
             }, 'company')
         );
 
+        console.log(serverResponse, '--------------')
+
 
         if (!serverResponse.ok) {
                 setErrors(serverResponse.errors)
@@ -58,58 +60,71 @@ function CompanyForm(accountType) {
             <form onSubmit={handleSubmit} className="signup-form">
             <div className="signup-info-grid">
                 <label>
-                Company Name
-                <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                />
+                    <div className='error-div'>
+                        Company Name
+                        {errors?.name && <p className='company-signup-errors'>{errors?.name}</p>}
+                    </div>
+                    <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    />
                 </label>
-                {errors?.name && <p>{errors?.name}</p>}
                 <label>
-                Phone Number
-                <input
-                type="text"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                required
-                />
+                    <div className='error-div'>
+                        Phone Number
+                        {errors?.phoneNumber && <p className='company-signup-errors'>{errors?.phoneNumber}</p>}
+                    </div>
+                    <input
+                    type="text"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    required
+                    />
                 </label>
-                {errors?.phoneNumber && <p>{errors?.phoneNumber}</p>}
                 <label>
-                Address
-                <input
-                type="text"
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                required
-                />
+                    <div className='error-div'>
+                        Address
+                        {errors?.address && <p className='company-signup-errors'>{errors?.address}</p>}
+                    </div>
+                    <input
+                    type="text"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    required
+                    />
                 </label>
-                {errors?.address && <p>{errors?.address}</p>}
                 <label>
-                State
-                <input
-                type="text"
-                value={state}
-                onChange={(e) => setState(e.target.value)}
-                required
-                />
+                    <div className='error-div'>
+                        State
+                        {errors?.state && <p className='company-signup-errors'>{errors?.state}</p>}
+                    </div>
+                    <input
+                    type="text"
+                    value={state}
+                    onChange={(e) => setState(e.target.value)}
+                    required
+                    />
                 </label>
-                {errors?.state && <p>{errors?.state}</p>}
                 <label>
-                Zipcode
-                <input
-                type="text"
-                value={zipcode}
-                onChange={(e) => setZipcode(e.target.value)}
-                required
-                />
+                    <div className='error-div'>
+                        Zipcode
+                        {errors?.zipcode && <p className='company-signup-errors'>{errors?.zipcode}</p>}
+                    </div>
+                    <input
+                    type="text"
+                    value={zipcode}
+                    onChange={(e) => setZipcode(e.target.value)}
+                    required
+                    />
                 </label>
-                {errors?.zipcode && <p>{errors?.zipcode}</p>}
             </div>
             <label>
-                Email
+                <div className='error-div'>
+                    Email
+                    {errors?.email && <p className='company-signup-errors'>{errors?.email}</p>}
+                </div>
                 <input
                 type="text"
                 value={email}
@@ -117,9 +132,11 @@ function CompanyForm(accountType) {
                 required
                 />
             </label>
-            {errors?.email && <p>{errors?.email}</p>}
             <label>
-                Password
+                <div className='error-div'>
+                    Password
+                    {errors?.password && <p className='company-signup-errors'>{errors?.password}</p>}
+                </div>
                 <input
                 type="password"
                 value={password}
@@ -127,9 +144,9 @@ function CompanyForm(accountType) {
                 required
                 />
             </label>
-            {errors?.password && <p>{errors?.password}</p>}
             <label>
                 Re-enter Password
+                {errors?.confirmPassword && <p className='company-signup-errors'>{errors?.confirmPassword}</p>}
                 <input
                 type="password"
                 value={confirmPassword}
@@ -137,7 +154,6 @@ function CompanyForm(accountType) {
                 required
                 />
             </label>
-            {errors?.confirmPassword && <p>{errors?.confirmPassword}</p>}
             </form>
             <button type="submit" onClick={(e) => handleSubmit(e)} className="signup-enter-button enabled">Submit</button>
         </>
