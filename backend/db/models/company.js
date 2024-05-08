@@ -63,7 +63,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             validate: {
                 len: [5, 10],
-                isNumeric: true
+                isInt: true
             }
         },
         logo: {

@@ -20,7 +20,7 @@ router.use('/business', companyRouter);
 
 // Restore user
 router.get('/restore-user', (req, res) => {
-    return res.json(req.businessAdmin);
+    return res.json(req.user);
 });
 
 

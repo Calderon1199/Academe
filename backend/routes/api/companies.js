@@ -10,9 +10,9 @@ const router = express.Router();
 //backend validation for signup
 const validateCompanySignup = [
     check('email')
-        .exists({ checkFalsy: true })
-        .isEmail()
-        .withMessage('Please provide a valid email.')
+        .exists({ checkFalsy: true }).withMessage('Please provide an email')
+        .isEmail().withMessage('Please provide a valid email.')
+        .notEmpty().withMessage('Please provide an email.')
         .custom(async email => {
             const existingEmail = await Company.findByEmail(email)
             if (existingEmail) {
@@ -20,14 +20,14 @@ const validateCompanySignup = [
             }
         }),
     check('password')
-        .exists({ checkFalsy: true })
+        .exists({ checkFalsy: true }).withMessage('Please provide a password')
         .isLength({ min: 6 })
         .withMessage('Password must be 6 characters or more.'),
     check('name')
-        .exists({ checkFalsy: true })
-        .withMessage('Please provide your business name.')
+        .exists({ checkFalsy: true }).withMessage('Please provide a name')
         .isLength({ min: 2, max: 30 })
         .withMessage('Name must be between 2 and 30 characters.')
+        .notEmpty().withMessage('Please provide a name.')
         .custom((value) => {
             if (!/^[a-zA-Z0-9\s]*$/.test(value)) {
                 throw new Error('Name can only contain letters, numbers, and spaces.');
@@ -36,8 +36,8 @@ const validateCompanySignup = [
         }),
     check('phoneNumber')
         .exists({ checkFalsy: true }).withMessage('Please provide a phone number.')
-        .isNumeric().withMessage('Phone number must contain only numbers.')
-        .isLength({ min: 10, max: 10 }).withMessage('Phone number must be 10 digits long.')
+        .isLength({ min: 13, max: 13 }).withMessage('Phone number must be 10 digits long.')
+        .notEmpty().withMessage('Please provide a phone number.')
         .custom((value) => {
             if (!/^[0-9()-]+$/.test(value)) {
                 throw new Error('Phone number format: (***) ***-****');
@@ -47,6 +47,7 @@ const validateCompanySignup = [
     check('address')
         .exists({ checkFalsy: true }).withMessage('Please provide a valid address')
         .isLength({ min: 5, max: 100 }).withMessage('Address must be between 5 and 100 charcters')
+        .notEmpty().withMessage('Please provide an address.')
         .custom((value) => {
             if (!/^[a-zA-Z0-9\s]*$/.test(value)) {
                 throw new Error('Address format is incorrect');
@@ -58,10 +59,12 @@ const validateCompanySignup = [
         .exists({ checkFalsy: true }).withMessage('Please provide a state.')
         .isAlpha().withMessage('State may only include letters.')
         .isLength({ min: 2, max: 2 }).withMessage('State should be abbreviated.')
+        .notEmpty().withMessage('Please provide a state.')
         .isUppercase().withMessage('State must be uppercase.'),
     check('zipcode')
         .exists({ checkFalsy: true }).withMessage('Please provide a zipcode.')
-        .isInt().withMessage('Zipcode may only include integers.'),
+        .isInt().withMessage('Zipcode may only include integers.')
+        .notEmpty().withMessage('Please provide a zipcode.'),
     handleValidationErrors
 ];
 
@@ -83,12 +86,14 @@ router.post('/', validateCompanySignup, async (req, res) => {
             zipcode: company.zipcode,
         };
 
-        await setTokenCookie(res, safeCompany);
+        await setTokenCookie(res, safeCompany, 'company');
 
         return res.json({
             businessAdmin: safeCompany
         });
     } catch (err) {
+
+        console.log(err, 'wtf')
         return res.status(500).json({ message: 'Internal server error' });
     }
 });
