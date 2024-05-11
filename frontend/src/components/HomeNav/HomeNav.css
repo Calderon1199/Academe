@@ -1,0 +1,9 @@
+.team-icon{
+    width: 40px;
+    height: 40px
+}
+
+.nav-bar-intro {
+    display: flex;
+    align-items: center;
+}
