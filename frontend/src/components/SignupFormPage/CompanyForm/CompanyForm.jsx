@@ -49,7 +49,7 @@ function CompanyForm() {
                 setErrors(serverResponse.errors)
         } else {
             setErrors({}); // Clear errors
-            navigate("/"); // Navigate to the desired page on successful submission
+            navigate("/home"); // Navigate to the desired page on successful submission
         }
 
         setIsSubmitting(false); // Reset isSubmitting after handling form submission

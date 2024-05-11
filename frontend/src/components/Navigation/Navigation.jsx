@@ -7,6 +7,8 @@ import SignupFormModal from "../SignupFormModal";
 
 function Navigation() {
   const {setModalContent} = useModal();
+  const user = useSelector(state => state.session.user);
+  console.log(user);
   const navigate = useNavigate()
 
   return (
@@ -29,7 +31,6 @@ function Navigation() {
           <NavLink to="/request">Request A Feature</NavLink>
         </li>
       </div>
-
       <li className="nav-buttons">
         <button id="admin-button">Log In</button>
         <button id="parent-button" onClick={() => navigate('/signup')}>Sign Up</button>
