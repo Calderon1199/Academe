@@ -1,3 +1,8 @@
+.sidebar {
+    background-color: gray;
+    width: 20%;
+}
+
 .team-icon{
     width: 40px;
     height: 40px
@@ -7,3 +12,15 @@
     display: flex;
     align-items: center;
 }
+
+.user-header {
+    display: flex;
+    align-items: center;
+}
+
+.first-section-buttons, .second-section-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+
