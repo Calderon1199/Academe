@@ -35,6 +35,18 @@ function HomeNav(props) {
                     <button><i class="fa-regular fa-calendar-days"></i> Calendar</button>
                 </div>
             </div>
+            <div>
+                <div>
+                    <h3>Labels</h3>
+                    <i class="fa-solid fa-chevron-up"></i>
+                </div>
+                <div className='second-section-buttons'>
+                    <button><i class="fa-solid fa-bookmark"></i> Custom</button>
+                    <button><i class="fa-solid fa-bookmark"></i> Custom</button>
+                    <button><i class="fa-solid fa-bookmark"></i> Custom</button>
+                    <button><i class="fa-solid fa-bookmark"></i> Cusotm</button>
+                </div>
+            </div>
         </div>
     );
 }
