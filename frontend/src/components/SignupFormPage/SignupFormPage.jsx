@@ -4,6 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { thunkSignup } from "../../redux/session";
 import "./SignupForm.css";
 import CompanyForm from "./CompanyForm";
+import AdminForm from "./AdminForm/AdminForm";
 
 function SignupFormPage() {
   const dispatch = useDispatch();
@@ -61,9 +62,14 @@ function SignupFormPage() {
           <button onClick={() => setAccountType('parent')}>Parent <i class="fa-regular fa-user"></i></button>
         </div>
         {errors.server && <p>{errors.server}</p>}
-        {accountType === 'company' ? (
+        {accountType === 'company' && (
           < CompanyForm />
-        ): (
+        )}
+
+        {accountType === 'admin' && (
+          < AdminForm />
+        )}
+        {/* (
           <form onSubmit={handleSubmit} className="signup-form">
           <div className="signup-info-grid">
             <label>
@@ -148,7 +154,7 @@ function SignupFormPage() {
           </label>
           {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
         </form>
-        )}
+        )} */}
           {/* <button type="submit" className="signup-enter-button enabled">Submit</button> */}
       </div>
     </div>
