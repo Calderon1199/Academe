@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import React, { useEffect } from 'react';
 import './Splash.css';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';

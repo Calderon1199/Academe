@@ -33,6 +33,10 @@
 }
 
 .team-icon {
+    width: 40px;
+    height: 40px;
+}
+
 .profile-names h4 {
     margin: 0;
 }
@@ -68,11 +72,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    gap: 10px;
 }
 
-.first-section-buttons,
-.second-section-buttons {
 .first-section-buttons,
 .second-section-buttons {
     display: flex;

@@ -1,22 +1,12 @@
 import React, { useState } from 'react';
-import React, { useState } from 'react';
 import './HomeNav.css';
 import { useSelector } from 'react-redux';
-import SideBarMini from './SideBarMini';
-import SideBarMini from './SideBarMini';
 
 function HomeNav(props) {
     const user = useSelector(state => state.session.user);
     const [closePages, setClosePages] = useState(false);
     const [closeLabels, setCloseLabels] = useState(false);
     const [closeMenu, setCloseMenu] = useState(true);
-
-
-    const [closePages, setClosePages] = useState(false);
-    const [closeLabels, setCloseLabels] = useState(false);
-    const [closeMenu, setCloseMenu] = useState(true);
-
-
 
     return (
         <>
@@ -38,7 +28,7 @@ function HomeNav(props) {
                 <i class="fa-solid fa-bookmark bk-medium"></i>
                 <i class="fa-solid fa-bookmark bk-low"></i>
                 <i class="fa-solid fa-bookmark bk-on-hold"></i>
-            </div>
+                </div>
             </>
         ): (
             <div className='sidebar'>
@@ -117,8 +107,6 @@ function HomeNav(props) {
                     )}
                 </div>
             </div>
-            )}
-        </>
             )}
         </>
     );
