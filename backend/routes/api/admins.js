@@ -3,34 +3,55 @@ const bcrypt = require('bcryptjs');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Admin } = require('../../db/models');
+const { Admin, Company } = require('../../db/models');
 
 const router = express.Router();
 
 //backend validation for signup
 const validateAdminSignup = [
     check('email')
-        .exists({ checkFalsy: true })
-        .isEmail()
-        .withMessage('Please provide a valid email.'),
+        .exists({ checkFalsy: true }).withMessage('Please provide an email')
+        .isEmail().withMessage('Please provide a valid email.')
+        .notEmpty().withMessage('Please provide an email.')
+        .custom(async email => {
+            const existingEmail = await Admin.findByEmail(email)
+            if (existingEmail) {
+                throw new Error('Email already exists.')
+            }
+        }),
     check('firstName')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a first name.')
+        .isAlpha().withMessage('Must only contain letters.')
+        .notEmpty().withMessage('Please provide a name.')
         .isLength({ min: 2, max: 30 })
         .withMessage('First name must be between 2 and 30 characters.'),
     check('lastName')
         .exists({ checkFalsy: true })
         .withMessage('Please provide a last name.')
+        .isAlpha().withMessage('Must only contain letters.')
+        .notEmpty().withMessage('Please provide a name.')
         .isLength({ min: 2, max: 50})
         .withMessage('Last name must be between 2 and 50 characters.'),
     check('phoneNumber')
-        .exists({ checkFalsy: true })
-        .isNumeric()
-        .isLength({ min: 10, max: 10})
-        .withMessage('Please provide a valid phone number.'),
+        .exists({ checkFalsy: true }).withMessage('Please provide a phone number.')
+        .isLength({ min: 13, max: 13 }).withMessage('Phone number must be 10 digits long.')
+        .notEmpty().withMessage('Please provide a phone number.')
+        .custom((value) => {
+            if (!/^[0-9()-]+$/.test(value)) {
+                throw new Error('Phone number format: (***) ***-****');
+            }
+            return true;
+        }).withMessage('Phone number format: (***) ***-****'),
     check('companyId')
         .exists({ checkFalsy: true })
-        .withMessage('Please provide a company ID.'),
+        .withMessage('Please provide a company ID.')
+        .custom(async (companyId) => {
+            const existingCompany = await Company.findByPk(+companyId);
+            if (!existingCompany) {
+                throw new Error('Company ID does not exist.');
+            }
+        }),
     check('password')
         .exists({ checkFalsy: true })
         .isLength({ min: 6 })

@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
       Admin.belongsTo(models.School, { foreignKey: 'schoolId', sourceKey: 'id' });
       Admin.hasMany(models.Report, { foreignKey: 'adminId', sourceKey: 'id' });
     }
+
+    static async findByEmail(email) {
+      return await this.findOne({ where: { email } });
+    }
   }
   Admin.init({
     companyId: {

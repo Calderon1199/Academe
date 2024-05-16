@@ -44,7 +44,7 @@ const restoreUser = (req, res, next) => {
 
         try {
             const { id } = jwtPayload.data;
-            req.user = await Company.findByPk(id, {
+            req.user = await Admin.findByPk(id, {
                 attributes: {
                     include: ['email', 'createdAt', 'updatedAt']
                 }
