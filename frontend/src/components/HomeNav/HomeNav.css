@@ -33,7 +33,25 @@
 }
 
 .team-icon {
+.profile-names h4 {
+    margin: 0;
+}
+
+.profile-names p {
+    margin: 0;
+    font-size: 13px;
+    color: #737373;
+}
+
+.profile-intro {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.team-icon {
     width: 40px;
+    height: 40px;
     height: 40px;
 }
 
@@ -42,14 +60,19 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .user-header {
     display: flex;
     align-items: center;
     gap: 10px;
+    gap: 10px;
 }
 
+.first-section-buttons,
+.second-section-buttons {
 .first-section-buttons,
 .second-section-buttons {
     display: flex;

@@ -10,9 +10,10 @@ export default function Layout() {
   const dispatch = useDispatch();
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
+  console.log(location.pathname, '------qterhpnqp4tih')
   useEffect(() => {
     dispatch(thunkAuthenticate()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+  }, []);
 
   return (
     <>

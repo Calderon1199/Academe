@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './Splash.css';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -26,7 +27,7 @@ const Splash = () => {
             </div>
           </div>
           <div className='academe-logo-big'>
-            <img src='../../public/assets/logo.jpg'></img>
+            <img src='../../assets/logo.jpg'></img>
           </div>
         </div>
         <div className='info'>

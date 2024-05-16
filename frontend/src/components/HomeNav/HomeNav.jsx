@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import React, { useState } from 'react';
 import './HomeNav.css';
 import { useSelector } from 'react-redux';
+import SideBarMini from './SideBarMini';
 
 function HomeNav(props) {
     const user = useSelector(state => state.session.user);
@@ -91,8 +93,26 @@ function HomeNav(props) {
                             <button><i class="fa-solid fa-bookmark bk-on-hold"></i> Custom</button>
                         </div>
                     )}
+                    <div className='labels-header'>
+                        <h4>LABELS</h4>
+                        {closeLabels ? (
+                            <i class="fa-solid fa-chevron-down close-chevron" onClick={() => setCloseLabels(!closeLabels)}></i>
+                        ): (
+                            <i class="fa-solid fa-chevron-up close-chevron" onClick={() => setCloseLabels(!closeLabels)}></i>
+                        )}
+                    </div>
+                    {!closeLabels && (
+                        <div className='second-section-buttons'>
+                            <button><i class="fa-solid fa-bookmark bk-high"></i> Custom</button>
+                            <button><i class="fa-solid fa-bookmark bk-medium"></i> Custom</button>
+                            <button><i class="fa-solid fa-bookmark bk-low"></i> Custom</button>
+                            <button><i class="fa-solid fa-bookmark bk-on-hold"></i> Custom</button>
+                        </div>
+                    )}
                 </div>
             </div>
+            )}
+        </>
             )}
         </>
     );
