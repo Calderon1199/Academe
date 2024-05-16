@@ -20,7 +20,7 @@ module.exports = {
         allowNull: false,
         references: {
           model: {
-            tableName: 'Companys',
+            tableName: 'Companies',
             schema: options.schema
           },
           key: 'id'
@@ -28,7 +28,7 @@ module.exports = {
       },
       schoolId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         references: {
           model: {
             tableName: 'Schools',
@@ -42,7 +42,7 @@ module.exports = {
         allowNull: false,
       },
       lastName: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
       authorized: {
@@ -56,6 +56,11 @@ module.exports = {
       },
       email: {
         type: Sequelize.STRING(256),
+        allowNull: false,
+        unique: true
+      },
+      phoneNumber: {
+        type: Sequelize.STRING(10),
         allowNull: false,
         unique: true
       },

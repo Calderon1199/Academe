@@ -15,19 +15,23 @@ module.exports = (sequelize, DataTypes) => {
       Admin.belongsTo(models.School, { foreignKey: 'schoolId', sourceKey: 'id' });
       Admin.hasMany(models.Report, { foreignKey: 'adminId', sourceKey: 'id' });
     }
+
+    static async findByEmail(email) {
+      return await this.findOne({ where: { email } });
+    }
   }
   Admin.init({
     companyId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Companys',
+        model: 'Companies',
         key: 'id'
       }
     },
     schoolId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: 'Schools',
         key: 'id'
@@ -37,14 +41,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [0, 30]
+        len: [2, 30]
       }
     },
     lastName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [0, 30]
+        len: [2, 50]
       }
     },
     authorized: {
@@ -56,7 +60,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [0, 50]
+        len: [3, 50]
       }
     },
     email: {
@@ -64,7 +68,16 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         isEmail: true,
-        len: [3, 256]
+        len: [5, 256]
+      }
+    },
+    phoneNumber: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+      validate: {
+        len: [10, 10],
+        isNumeric: true
       }
     },
     hashedPassword: {

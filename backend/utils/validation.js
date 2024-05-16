@@ -7,9 +7,12 @@ const handleValidationErrors = (req, _res, next) => {
 
     if (!validationErrors.isEmpty()) {
         const errors = {};
-        validationErrors
-            .array()
-            .forEach(error => errors[error.path] = error.msg);
+        validationErrors.array().forEach(error => {
+            // Check if the error has a nested 'param' field (field key)
+            const key = error.param || 'undefined';
+            // Associate the error message with the correct field key
+            errors[key] = error.msg;
+        });
 
         const err = Error("Bad request.");
         err.errors = errors;

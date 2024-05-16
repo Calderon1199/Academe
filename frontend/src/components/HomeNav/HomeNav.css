@@ -1,0 +1,187 @@
+.sidebar {
+    width: 17%;
+    padding: 1%;
+    height: 100%;
+    position: absolute;
+    background-color: white;
+    z-index: 99;
+    left: 2%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgb(35, 35, 35);
+}
+
+.profile-names {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.profile-names h4 {
+    margin: 0;
+}
+
+.profile-names p {
+    margin: 0;
+    font-size: 13px;
+    color: #737373;
+}
+
+.profile-intro {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.team-icon {
+    width: 40px;
+    height: 40px;
+}
+
+.profile-names h4 {
+    margin: 0;
+}
+
+.profile-names p {
+    margin: 0;
+    font-size: 13px;
+    color: #737373;
+}
+
+.profile-intro {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.team-icon {
+    width: 40px;
+    height: 40px;
+    height: 40px;
+}
+
+.nav-bar-intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.user-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.first-section-buttons,
+.second-section-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-section-buttons button,
+.second-section-buttons button {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 0 15px;
+    background: none;
+    color: #737373;
+    height: 35px;
+    border-radius: 10px;
+    justify-content: flex-start;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.first-section-buttons button:hover,
+.second-section-buttons button:hover {
+    background-color: #E5E0FF;
+    font-weight: bold;
+    color: #6752FF;
+}
+
+.first-section-buttons i,
+.second-section-buttons i {
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+}
+
+.pages-header,
+.labels-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.pages-header h4,
+.labels-header h4 {
+    margin: 0;
+    font-size: 12px;
+}
+
+.close-chevron {
+    cursor: pointer;
+    font-size: 17px;
+}
+
+.bk-high {
+    color: #E45754;
+}
+
+.bk-medium {
+    color: #EA9F2C;
+}
+
+.bk-low {
+    color: #60C255
+}
+
+.bk-on-hold {
+    color: #B0A3FF
+}
+
+
+.side-bar-mini {
+    width: 2%;
+    padding: 1%;
+    position: absolute;
+    color: #737373;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    z-index: 99;
+    left: 2%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgb(35, 35, 35);
+}
+
+.side-bar-mini i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 13px;
+    height: 35px;
+    width: 35px;
+    cursor: pointer;
+}
+
+.side-bar-mini i:not(.close-chevron):hover {
+    background-color: #E5E0FF;
+    font-weight: bold;
+    color: #6753FF;
+}
+
+#expand-nav {
+    margin-bottom: 30%;
+}
+
+#expand-nav:hover {
+    color: black;
+}

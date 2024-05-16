@@ -1,17 +1,17 @@
 const jwt = require('jsonwebtoken');
 const { jwtConfig } = require('../config');
 const { User } = require('../db/models');
+const {Company} = require('../db/models');
 
 const { secret, expiresIn } = jwtConfig;
 
 
 // Sends a JWT Cookie
-const setTokenCookie = (res, user) => {
+const setTokenCookie = (res, user, type) => {
     // Create the token.
     const safeUser = {
         id: user.id,
         email: user.email,
-        username: user.username,
     };
     const token = jwt.sign(
         { data: safeUser },
@@ -44,7 +44,7 @@ const restoreUser = (req, res, next) => {
 
         try {
             const { id } = jwtPayload.data;
-            req.user = await User.findByPk(id, {
+            req.user = await Admin.findByPk(id, {
                 attributes: {
                     include: ['email', 'createdAt', 'updatedAt']
                 }

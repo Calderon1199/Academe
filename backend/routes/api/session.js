@@ -5,7 +5,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { Admin } = require('../../db/models');
 
 const router = express.Router();
 
@@ -26,16 +26,15 @@ const validateLogin = [
 router.post('/', async (req, res, next) => {
     const { credential, password } = req.body;
     console.log(credential, password, "************")
-    const user = await User.unscoped().findOne({
+    const admin = await Admin.unscoped().findOne({
         where: {
             [Op.or]: {
-                username: credential,
                 email: credential
             }
         }
     });
 
-    if (!user || !bcrypt.compareSync(password, user.hashedPassword.toString())) {
+    if (!admin || !bcrypt.compareSync(password, admin.hashedPassword.toString())) {
         const err = new Error('Login failed');
         err.status = 401;
         err.title = 'Login failed';
@@ -43,16 +42,17 @@ router.post('/', async (req, res, next) => {
         return next(err);
     }
 
-    const safeUser = {
-        id: user.id,
-        email: user.email,
-        username: user.username,
+    const safeAdmin = {
+        id: admin.id,
+        email: admin.email,
+        firstName: admin.firstName,
+        lastName: admin.lastName,
     };
 
-    await setTokenCookie(res, safeUser);
+    await setTokenCookie(res, safeAdmin);
 
     return res.json({
-        user: safeUser
+        admin: safeAdmin
     });
 });
 

@@ -1,7 +1,7 @@
 'use strict';
 
 let options = {};
-options.tableName = 'Companys';
+options.tableName = 'Companies';
 if (process.env.NODE_ENV === 'production') {
     options.schema = process.env.SCHEMA;  // define your schema in options object
 }
@@ -20,12 +20,14 @@ module.exports = {
                 allowNull: false
             },
             phoneNumber: {
-                type: Sequelize.STRING(10),
-                allowNull: false
+                type: Sequelize.STRING(13),
+                allowNull: false,
+                unique: true
             },
             address: {
                 type: Sequelize.STRING(100),
-                allowNull: false
+                allowNull: false,
+                unique: true
             },
             state: {
                 type: Sequelize.STRING(2),

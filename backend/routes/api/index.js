@@ -2,7 +2,9 @@ const router = require('express').Router();
 const { restoreUser, requireAuth, setTokenCookie } = require('../../utils/auth.js');
 const { User } = require('../../db/models');
 const sessionRouter = require('./session.js');
-const usersRouter = require('./users.js');
+const adminRouter = require('./admins.js');
+const parentRouter = require('./parents.js');
+const companyRouter = require('./companies.js');
 
 
 //You can use requireAuth as middleware for routes that require sign in
@@ -11,7 +13,9 @@ const usersRouter = require('./users.js');
 router.use(restoreUser);
 
 router.use('/session', sessionRouter);
-router.use('/users', usersRouter);
+router.use('/parents', parentRouter);
+router.use('/users', adminRouter);
+router.use('/business', companyRouter);
 
 
 // Restore user

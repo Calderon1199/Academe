@@ -46,21 +46,40 @@ export const thunkLogin = (credentials) => async dispatch => {
     }
 };
 
-export const thunkSignup = (user) => async (dispatch) => {
-    const response = await csrfFetch("/api/users", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user)
-    });
+export const thunkSignup = (user, userType) => async (dispatch) => {
+    let response;
+    try {
+        if (userType === 'admin') {
+            response = await csrfFetch("/api/users", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(user)
+            });
+        } else if (userType === 'parent') {
+            response = await csrfFetch("/api/parents", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(user)
+            });
+        } else {
+            response = await csrfFetch("/api/business", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(user)
+            });
+        }
 
-    if (response.ok) {
-        const data = await response.json();
-        dispatch(setUser(data));
-    } else if (response.status < 500) {
-        const errorMessages = await response.json();
-        return errorMessages
-    } else {
-        return { server: "Something went wrong. Please try again" }
+
+        if (response.ok) {
+            const data = await response.json();
+            dispatch(setUser(data));
+        } else {
+            const errorMessages = await response.json();
+            return { error: errorMessages };
+        }
+    } catch (error) {
+        const newErrors = await error.json();
+        return { errors: newErrors.errors };
     }
 };
 
