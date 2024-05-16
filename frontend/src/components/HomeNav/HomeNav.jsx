@@ -3,9 +3,15 @@ import React, { useState } from 'react';
 import './HomeNav.css';
 import { useSelector } from 'react-redux';
 import SideBarMini from './SideBarMini';
+import SideBarMini from './SideBarMini';
 
 function HomeNav(props) {
     const user = useSelector(state => state.session.user);
+    const [closePages, setClosePages] = useState(false);
+    const [closeLabels, setCloseLabels] = useState(false);
+    const [closeMenu, setCloseMenu] = useState(true);
+
+
     const [closePages, setClosePages] = useState(false);
     const [closeLabels, setCloseLabels] = useState(false);
     const [closeMenu, setCloseMenu] = useState(true);
