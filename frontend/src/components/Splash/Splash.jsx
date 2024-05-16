@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Splash.css';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import HomeNav from '../HomeNav';
 
 const Splash = () => {
+  const navigate = useNavigate();
+  const user = useSelector(state => state.session?.user);
+  useEffect(() => {
+    if (user) {
+      navigate('/Home')
+    }
+  }, [user])
 
   return (
     <div className='homepage'>
+      <HomeNav />
         <div className='homepage-intro'>
           <div className='homepage-intro-header'>
             <h1>Empower Parents, Elevate Education.</h1>
