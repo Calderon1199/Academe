@@ -130,3 +130,12 @@
     align-items: center;
     justify-content: space-between;
 }
+
+button.selected {
+    color: #36CE75;
+    border-color: #36CE75;
+}
+
+button.selected:hover {
+    background: none;
+}
