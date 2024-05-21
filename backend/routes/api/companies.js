@@ -92,8 +92,6 @@ router.post('/', validateCompanySignup, async (req, res) => {
             businessAdmin: safeCompany
         });
     } catch (err) {
-
-        console.log(err, 'wtf')
         return res.status(500).json({ message: 'Internal server error' });
     }
 });

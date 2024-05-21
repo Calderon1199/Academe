@@ -11,7 +11,7 @@ function SignupFormPage() {
   const sessionUser = useSelector((state) => state.session.user);
   const [accountType, setAccountType] = useState("company");
 
-  if (sessionUser) return <Navigate to="/home" replace={true} />;
+  if (sessionUser) return <Navigate to="/dashboard" replace={true} />;
 
 
   return (
@@ -23,9 +23,9 @@ function SignupFormPage() {
         <h1>Registration</h1>
         <h3>Choose your account type</h3>
         <div className="account-type-buttons">
-          <button className={accountType === 'company' ? 'selected': ''} onClick={() => setAccountType('company')}>Company <i class="fa-regular fa-building"></i></button>
-          <button className={accountType === 'admin' ? 'selected': ''} onClick={() => setAccountType('admin')}>Admin <i class="fa-solid fa-user-tie"></i></button>
-          <button className={accountType === 'parent' ? 'selected': ''} onClick={() => setAccountType('parent')}>Parent <i class="fa-regular fa-user"></i></button>
+          <button className={accountType === 'company' ? 'selected': ''} onClick={() => setAccountType('company')}>Company <i className="fa-regular fa-building"></i></button>
+          <button className={accountType === 'admin' ? 'selected': ''} onClick={() => setAccountType('admin')}>Admin <i className="fa-solid fa-user-tie"></i></button>
+          <button className={accountType === 'parent' ? 'selected': ''} onClick={() => setAccountType('parent')}>Parent <i className="fa-regular fa-user"></i></button>
         </div>
         {accountType === 'company' && (
           < CompanyForm />

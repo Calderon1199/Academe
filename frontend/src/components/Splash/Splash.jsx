@@ -9,7 +9,7 @@ const Splash = () => {
   const user = useSelector(state => state.session?.user);
   useEffect(() => {
     if (user) {
-      navigate('/Home')
+      navigate('/dashboard')
     }
   }, [user])
 

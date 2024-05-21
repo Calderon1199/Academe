@@ -53,7 +53,7 @@ function ParentForm() {
             const serverResponse = await dispatch(thunkSignup(payload, 'parent'));
 
             if (serverResponse?.ok) {
-                navigate("/home"); // Navigate to the desired page on successful submission
+                navigate("/dashboard"); // Navigate to the desired page on successful submission
             } else {
                 setErrors(serverResponse?.errors || { general: "An unexpected error occurred. Please try again later." });
             }
