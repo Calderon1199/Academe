@@ -17,11 +17,15 @@ module.exports = (sequelize, DataTypes) => {
             Parent.belongsTo(models.School, { foreignKey: 'schoolId', sourceKey: 'id' });
             Parent.belongsTo(models.Company, { foreignKey: 'companyId', sourceKey: 'id' });
         }
+
+        static async findByEmail(email) {
+            return await this.findOne({ where: { email } });
+        }
     }
     Parent.init({
         companyId: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             references: {
                 model: 'Companies',
                 key: 'id'
@@ -29,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         schoolId: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             references: {
                 model: 'Schools',
                 key: 'id'
@@ -77,8 +81,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             unique: true,
             validate: {
-                len: [10,10],
-                isNumeric: true
+                len: [14,14],
             }
         },
         studentRelation: {

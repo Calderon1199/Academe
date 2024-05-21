@@ -17,7 +17,7 @@ module.exports = {
             },
             companyId: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
+                allowNull: true,
                 references: {
                     model: {
                         tableName: 'Companies',
@@ -28,7 +28,7 @@ module.exports = {
             },
             schoolId: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
+                allowNull: true,
                 references: {
                     model: {
                         tableName: 'Schools',
@@ -66,7 +66,7 @@ module.exports = {
                 unique: true
             },
             phoneNumber: {
-                type: Sequelize.STRING(10),
+                type: Sequelize.STRING(14),
                 allowNull: false,
                 unique: true
             },
