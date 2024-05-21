@@ -2,6 +2,8 @@ import { useState } from "react";
 import { thunkSignup } from "../../../redux/session";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { formatPhoneNumber } from "../utils/ParentSignup";
+
 
 function ParentForm() {
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,42 +21,49 @@ function ParentForm() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    function handlePhoneNumberChange(event) {
+        const formattedValue = formatPhoneNumber(event.target.value);
+        setPhoneNumber(formattedValue);
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setIsSubmitting(true); // Set isSubmitting to true when form is submitted
+        setIsSubmitting(true);
+        setErrors({}); // Reset errors before submission
 
         if (password !== confirmPassword) {
-            setErrors({
-                confirmPassword: "Confirm Password field must be the same as the Password field",
-            });
-            setIsSubmitting(false); // Reset isSubmitting
+            setErrors({ confirmPassword: "Confirm Password field must be the same as the Password field" });
+            setIsSubmitting(false);
             return;
         }
 
-        const serverResponse = await dispatch(
-            thunkSignup({
-                studentRelation,
-                phoneNumber,
-                companyId,
-                firstName,
-                lastName,
-                schoolId,
-                password,
-                email
-            }, 'parent')
-        );
+        const payload = {
+            authorized: !companyId && !schoolId,
+            studentRelation,
+            phoneNumber,
+            firstName,
+            lastName,
+            password,
+            email,
+            ...(companyId && { companyId }),
+            ...(schoolId && { schoolId })
+        };
 
+        try {
+            const serverResponse = await dispatch(thunkSignup(payload, 'parent'));
 
-
-        if (!serverResponse.ok) {
-                setErrors(serverResponse.errors)
-        } else {
-            setErrors({}); // Clear errors
-            navigate("/home"); // Navigate to the desired page on successful submission
+            if (serverResponse?.ok) {
+                navigate("/home"); // Navigate to the desired page on successful submission
+            } else {
+                setErrors(serverResponse?.errors || { general: "An unexpected error occurred. Please try again later." });
+            }
+        } catch (error) {
+            setErrors({ general: "An unexpected error occurred. Please try again later." });
+        } finally {
+            setIsSubmitting(false); // Reset isSubmitting after handling form submission
         }
-
-        setIsSubmitting(false); // Reset isSubmitting after handling form submission
     };
+
 
     return (
         <>
@@ -92,7 +101,8 @@ function ParentForm() {
                     <input
                     type="text"
                     value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    onChange={(e) => handlePhoneNumberChange(e)}
+                    maxLength={10}
                     required
                     />
                 </label>
@@ -101,34 +111,40 @@ function ParentForm() {
                         Student Relation
                         {errors?.studentRelation && <p className='company-signup-errors'>{errors?.studentRelation}</p>}
                     </div>
-                    <input
-                    type="text"
-                    value={studentRelation}
-                    onChange={(e) => setStudentRelation(e.target.value)}
-                    required
-                    />
+                    <select
+                        value={studentRelation}
+                        onChange={(e) => setStudentRelation(e.target.value)}
+                        required
+                    >
+                        <option value=''>Select</option>
+                        <option value="Parent">Parent</option>
+                        <option value="Guardian">Guardian</option>
+                        <option value="Sibling">Sibling</option>
+                        <option value="Relative">Relative</option>
+                        {/* Add more options as needed */}
+                    </select>
                 </label>
                 <label>
                     <div className='error-div'>
-                        Company ID
+                        Company ID {!errors?.companyId ? <span style={{ color: 'grey', fontSize: '10px'}}>(optional)</span> : ''}
                         {errors?.companyId && <p className='company-signup-errors'>{errors?.companyId}</p>}
                     </div>
                     <input
                     type="text"
                     value={companyId}
-                    onChange={(e) => setCompanyId(e.target.value)}
+                    onChange={(e) => setCompanyId(e.target.value.length === 0 ? null : e.target.value)}
                     required
                     />
                 </label>
                 <label>
                     <div className='error-div'>
-                        School ID
+                        School ID {!errors?.schoolId ? <span style={{ color: 'grey', fontSize: '10px'}}>(optional)</span> : ''}
                         {errors?.schoolId && <p className='company-signup-errors'>{errors?.schoolId}</p>}
                     </div>
                     <input
                     type="text"
                     value={schoolId}
-                    onChange={(e) => setSchoolId(e.target.value)}
+                    onChange={(e) => setSchoolId(e.target.value.length === 0 ? null : e.target.value)}
                     required
                     />
                 </label>
