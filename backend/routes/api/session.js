@@ -5,7 +5,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { Admin } = require('../../db/models');
+const { Admin, Parent, Company } = require('../../db/models');
 
 const router = express.Router();
 
@@ -24,17 +24,36 @@ const validateLogin = [
 
 // Log in
 router.post('/', async (req, res, next) => {
-    const { credential, password } = req.body;
-    console.log(credential, password, "************")
-    const admin = await Admin.unscoped().findOne({
-        where: {
-            [Op.or]: {
-                email: credential
-            }
-        }
-    });
+    const { credential, password, userType } = req.body;
+    console.log(credential, password, userType, "\*\*\*\*\*\*\*\*\*\*\*\*");
 
-    if (!admin || !bcrypt.compareSync(password, admin.hashedPassword.toString())) {
+    let user;
+
+    switch (userType) {
+        case 'company':
+            user = await Company.unscoped().findOne({
+                where: { [Op.or]: { email: credential } }
+            });
+            break;
+        case 'admin':
+            user = await Admin.unscoped().findOne({
+                where: { [Op.or]: { email: credential } }
+            });
+            break;
+        case 'parent':
+            user = await Parent.unscoped().findOne({
+                where: { [Op.or]: { email: credential } }
+            });
+            break;
+        default:
+            const err = new Error('Invalid user type');
+            err.status = 400;
+            err.title = 'Invalid user type';
+            err.errors = { userType: 'The provided user type is invalid.' };
+            return next(err);
+    }
+
+    if (!user || !bcrypt.compareSync(password, user.hashedPassword.toString())) {
         const err = new Error('Login failed');
         err.status = 401;
         err.title = 'Login failed';
@@ -42,18 +61,27 @@ router.post('/', async (req, res, next) => {
         return next(err);
     }
 
-    const safeAdmin = {
-        id: admin.id,
-        email: admin.email,
-        firstName: admin.firstName,
-        lastName: admin.lastName,
-    };
+    let safeUser;
 
-    await setTokenCookie(res, safeAdmin);
+    if (userType === 'company') {
+        safeUser = {
+            id: user.id,
+            email: user.email,
+            companyName: user.companyName,
+            // Add any other company-specific properties you need
+        };
+    } else {
+        safeUser = {
+            id: user.id,
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            // Add any other user-specific properties you need
+        };
+    }
 
-    return res.json({
-        admin: safeAdmin
-    });
+    await setTokenCookie(res, safeUser);
+    return res.json({ user: safeUser });
 });
 
 // Log out
