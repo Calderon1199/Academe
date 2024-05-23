@@ -1,0 +1,86 @@
+.login-container {
+    height: fit-content;
+    width: 370px;
+    background-color: white;
+    border-radius: 15px;
+    padding: 25px 25px 25px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-container h2 {
+    margin: 0px;
+}
+
+.login-container h5 {
+    margin-bottom: 25px;
+    margin-top: 5px;
+}
+
+hr.solid {
+    width: 100%;
+    border: 1px solid #E6E6E6;
+}
+
+.login-container form {
+    margin-top: 15px;
+    height: 140px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.login-container label {
+    font-size: 13px;
+    color: #2E2E2E;
+    height: 100px;
+    font-weight: 600;
+}
+
+.login-container input {
+    height: 35px;
+    border-radius: 10px;
+    border: 2px solid #E6E6E6;
+}
+
+.login-button-enabled {
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    background: linear-gradient(#8F79E6, #6D4EF0);
+}
+
+.login-button {
+    margin-top: 15px;
+    cursor: not-allowed;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    background: grey;
+}
+
+.login-container p {
+    font-size: 13px;
+}
+
+#Create-Account-Link {
+    text-decoration: none;
+    font-weight: 500;
+    color: #6D4EF0;
+}
+
+#Create-Account-Link:hover {
+    text-decoration: underline;
+}

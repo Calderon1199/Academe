@@ -9,7 +9,6 @@ const companyRouter = require('./companies.js');
 
 //You can use requireAuth as middleware for routes that require sign in
 //You can use setTokenCookie as a func to set cookie for user
-
 router.use(restoreUser);
 
 router.use('/session', sessionRouter);
