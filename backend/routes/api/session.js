@@ -21,28 +21,26 @@ const validateLogin = [
     handleValidationErrors
 ];
 
-
 // Log in
-router.post('/', async (req, res, next) => {
+router.post('/', validateLogin, async (req, res, next) => {
     const { credential, password, userType } = req.body;
-    console.log(credential, password, userType, "\*\*\*\*\*\*\*\*\*\*\*\*");
 
     let user;
 
     switch (userType) {
         case 'company':
             user = await Company.unscoped().findOne({
-                where: { [Op.or]: { email: credential } }
+                where: { email: credential }
             });
             break;
         case 'admin':
             user = await Admin.unscoped().findOne({
-                where: { [Op.or]: { email: credential } }
+                where: { email: credential }
             });
             break;
         case 'parent':
             user = await Parent.unscoped().findOne({
-                where: { [Op.or]: { email: credential } }
+                where: { email: credential }
             });
             break;
         default:
@@ -61,35 +59,27 @@ router.post('/', async (req, res, next) => {
         return next(err);
     }
 
-    let safeUser;
-
-    if (userType === 'company') {
-        safeUser = {
-            id: user.id,
-            email: user.email,
-            companyName: user.companyName,
-            // Add any other company-specific properties you need
-        };
-    } else {
-        safeUser = {
-            id: user.id,
-            email: user.email,
+    const safeUser = {
+        id: user.id,
+        email: user.email,
+        userType,
+        ...(userType === 'company' ? { companyName: user.name } : {
             firstName: user.firstName,
-            lastName: user.lastName,
-            // Add any other user-specific properties you need
-        };
-    }
+            lastName: user.lastName
+        })
+    };
 
     await setTokenCookie(res, safeUser);
     return res.json({ user: safeUser });
 });
 
 // Log out
-router.delete('/',(_req, res) => {
+router.delete('/', (_req, res) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
 });
 
-
+// Use restoreUser middleware to check for the user on every request
+router.use(restoreUser);
 
 module.exports = router;

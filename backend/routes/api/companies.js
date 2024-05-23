@@ -76,7 +76,7 @@ router.post('/', validateCompanySignup, async (req, res) => {
         const hashedPassword = bcrypt.hashSync(password);
         const company = await Company.create({ email, hashedPassword, name, phoneNumber, address, state, zipcode });
 
-        const safeCompany = {
+        const safeUser = {
             id: company.id,
             email: company.email,
             name: company.name,
@@ -86,10 +86,10 @@ router.post('/', validateCompanySignup, async (req, res) => {
             zipcode: company.zipcode,
         };
 
-        await setTokenCookie(res, safeCompany, 'company');
+        await setTokenCookie(res, safeUser, 'company');
 
         return res.json({
-            businessAdmin: safeCompany
+            user: safeUser
         });
     } catch (err) {
         return res.status(500).json({ message: 'Internal server error' });
@@ -98,9 +98,9 @@ router.post('/', validateCompanySignup, async (req, res) => {
 
 // Restore session admin
 router.get('/', (req, res) => {
-    const { businessAdmin } = req;
-    if (businessAdmin) {
-        const safeCompany = {
+    const { user } = req;
+    if (user) {
+        const safeUser = {
             id: businessAdmin.id,
             email: businessAdmin.email,
             name: businessAdmin.username,
@@ -110,9 +110,9 @@ router.get('/', (req, res) => {
             zipcode: businessAdmin.zipcode
         };
         return res.json({
-            businessAdmin: safeCompany
+            user: safeUser
         });
-    } else return res.json({ businessAdmin: null });
+    } else return res.json({ user: null });
 });
 
 
