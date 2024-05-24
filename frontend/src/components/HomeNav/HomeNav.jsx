@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './HomeNav.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { thunkLogout } from '../../redux/session';
+import { useNavigate } from 'react-router-dom';
 
 function HomeNav(props) {
-    const user = useSelector(state => state.session.user);
+    const user = useSelector(state => state.session?.user);
+    console.log(user, 'blah');
     const [closePages, setClosePages] = useState(false);
     const [closeLabels, setCloseLabels] = useState(false);
     const [closeMenu, setCloseMenu] = useState(true);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const logout = async (e) => {
+        e.preventDefault();
+
+        try {
+            await dispatch(thunkLogout());
+            navigate('/')
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     return (
         <>
@@ -15,7 +31,7 @@ function HomeNav(props) {
                 <div className='side-bar-mini'>
                 <i className="fa-solid fa-angles-right close-chevron" id='expand-nav' style={{fontSize: '15px', }} onClick={() => setCloseMenu(!closeMenu)}></i>
                 <img src='../../assets/letter-t.png' className='team-icon'></img>
-                <img src={user?.logo} style={{width: '40px', height: '40px', borderRadius: '40px', objectFit: 'cover'}}></img>
+                <img src={user?.avatarUrl} style={{width: '40px', height: '40px', borderRadius: '40px', objectFit: 'cover'}} className='user-avi'></img>
                 <i className="fa-solid fa-chart-line"></i>
                 <i className="fa-regular fa-user"></i>
                 <h4 style={{fontSize: '12px', color: 'black'}}>Pages</h4>
@@ -28,6 +44,8 @@ function HomeNav(props) {
                 <i className="fa-solid fa-bookmark bk-medium"></i>
                 <i className="fa-solid fa-bookmark bk-low"></i>
                 <i className="fa-solid fa-bookmark bk-on-hold"></i>
+                <hr className='solid'></hr>
+                <i class="fa-solid fa-arrow-right-from-bracket" onClick={(e) => logout(e)}></i>
                 </div>
             </>
         ): (
@@ -47,8 +65,8 @@ function HomeNav(props) {
                     )}
                 </div>
                 <div className='user-header'>
-                    <img src={user?.logo} style={{width: '40px', height: '40px', borderRadius: '40px', objectFit: 'cover'}}></img>
-                    <h5>{user?.name}</h5>
+                    <img src={user?.avatarUrl} style={{width: '40px', height: '40px', borderRadius: '40px', objectFit: 'cover'}} className='user-avi'></img>
+                    <h5>{user?.name || `${user?.firstName} ${user?.lastName}`}</h5>
                 </div>
                 <div className='first-section-buttons'>
                     <button><i className="fa-solid fa-chart-line"></i> Activity</button>
@@ -89,6 +107,10 @@ function HomeNav(props) {
                             <button><i className="fa-solid fa-bookmark bk-on-hold"></i> Custom</button>
                         </div>
                     )}
+                    <hr className='solid'></hr>
+                    <div className='quick-bar-buttons'>
+                        <i class="fa-solid fa-arrow-right-from-bracket" onClick={(e) => logout(e)}><p>Sign Out</p></i>
+                    </div>
                 </div>
             </div>
             )}
