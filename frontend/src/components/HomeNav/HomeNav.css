@@ -71,6 +71,7 @@
 .user-header {
     display: flex;
     align-items: center;
+    height: fit-content;
     gap: 10px;
 }
 
@@ -184,4 +185,30 @@
 
 #expand-nav:hover {
     color: black;
+}
+
+.user-avi {
+    margin: 15px 0px;
+}
+
+.quick-bar-buttons {
+    color: #737373;
+}
+
+.quick-bar-buttons i:hover {
+    color: black;
+    font-size: 15px;
+}
+
+.quick-bar-buttons i {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 15px;
+}
+
+.quick-bar-buttons i p{
+    font-family: 'poppins';
+    font-size: 13px;
+    font-weight: 400;
 }
