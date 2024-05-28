@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     role: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [3, 50]
       }
@@ -76,8 +76,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       unique: true,
       validate: {
-        len: [10, 10],
-        isNumeric: true
+        len: [13, 13],
       }
     },
     hashedPassword: {

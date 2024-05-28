@@ -31,7 +31,7 @@ const setTokenCookie = (res, user) => {
 
 
 const restoreUser = (req, res, next) => {
-    const { token } = req.cookies;
+    const { token, userType } = req.cookies; // Include userType from cookies
     req.user = null;
 
     if (!token) {
@@ -43,11 +43,12 @@ const restoreUser = (req, res, next) => {
         if (err) {
             console.log('JWT verification error:', err);
             res.clearCookie('token');
+            res.clearCookie('userType'); // Clear userType cookie as well
             return next();
         }
 
         try {
-            const { id, userType } = jwtPayload.data;
+            const { id } = jwtPayload.data;
 
             switch (userType) {
                 case 'company':
@@ -67,22 +68,29 @@ const restoreUser = (req, res, next) => {
                     break;
                 default:
                     res.clearCookie('token');
+                    res.clearCookie('userType'); // Clear userType cookie as well
                     return next();
+            }
+
+            if (req.user) {
+                req.user.userType = userType; // Attach userType to req.user
             }
         } catch (e) {
             console.log('Error fetching user:', e);
             res.clearCookie('token');
+            res.clearCookie('userType'); // Clear userType cookie as well
             return next();
         }
 
         if (!req.user) {
             res.clearCookie('token');
+            res.clearCookie('userType'); // Clear userType cookie as well
         }
+
 
         return next();
     });
 };
-
 
 // If there is no current user, return an error
 const requireAuth = function (req, _res, next) {

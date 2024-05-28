@@ -70,12 +70,14 @@ router.post('/', validateLogin, async (req, res, next) => {
     };
 
     await setTokenCookie(res, safeUser);
+    res.cookie('userType', userType, { httpOnly: true, secure: process.env.NODE_ENV === 'production', maxAge: 7 * 24 * 60 * 60 * 1000 });
     return res.json({ user: safeUser });
 });
 
 // Log out
 router.delete('/', (_req, res) => {
     res.clearCookie('token');
+    res.clearCookie('userType');
     return res.json({ message: 'success' });
 });
 
