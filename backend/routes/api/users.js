@@ -52,6 +52,7 @@ router.post('/', validateSignup, async (req, res) => {
 // Restore session user
 router.get('/', (req, res) => {
     const { user } = req;
+
     if (user) {
         const safeUser = {
             id: user.id,

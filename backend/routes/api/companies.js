@@ -87,6 +87,7 @@ router.post('/', validateCompanySignup, async (req, res) => {
         };
 
         await setTokenCookie(res, safeUser, 'company');
+        res.cookie('userType', 'company', { httpOnly: true, secure: process.env.NODE_ENV === 'production', maxAge: 7 * 24 * 60 * 60 * 1000 });
 
         return res.json({
             user: safeUser
@@ -107,7 +108,7 @@ router.get('/', (req, res) => {
             phoneNumber: businessAdmin.phoneNumber,
             address: businessAdmin.address,
             state: businessAdmin.state,
-            zipcode: businessAdmin.zipcode
+            zipcode: businessAdmin.zipcode,
         };
         return res.json({
             user: safeUser

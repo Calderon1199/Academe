@@ -34,7 +34,7 @@ function AdminForm() {
                 firstName,
                 lastName,
                 phoneNumber,
-                companyId,
+                companyId: 1,
                 email,
                 password
             }, 'admin')

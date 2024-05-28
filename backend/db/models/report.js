@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             Report.belongsTo(models.Parent, { foreignKey: 'parentId', sourceKey: 'id' });
             Report.belongsTo(models.Student, { foreignKey: 'studentId', sourceKey: 'id' });
-            Report.belongsTo(models.Admin, { foreignKey: 'AdminId', sourceKey: 'id' });
+            Report.belongsTo(models.Admin, { foreignKey: 'adminId', sourceKey: 'id' });
             Report.belongsTo(models.Company, { foreignKey: "companyId", sourceKey: 'id' });
         }
     }
@@ -70,11 +70,6 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         sequelize,
         modelName: 'Report',
-        defaultScope: {
-            attributes: {
-                exclude: ["createdAt", "updatedAt"]
-            }
-        }
     });
     return Report;
 };
