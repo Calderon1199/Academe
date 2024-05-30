@@ -17,7 +17,7 @@ export default function Layout() {
   return (
     <>
       <ModalProvider>
-        {location.pathname !== '/dashboard' && <Navigation /> }
+        {location.pathname !== '/dashboard' || location.pathname !== '/reports' && <Navigation /> }
         {isLoaded && <Outlet />}
         <Modal />
       </ModalProvider>
