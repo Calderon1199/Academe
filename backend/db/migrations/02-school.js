@@ -15,6 +15,7 @@ module.exports = {
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
+
             companyId: {
                 type: Sequelize.INTEGER,
                 allowNull: false,

@@ -3,17 +3,17 @@ import { csrfFetch } from './csrf';
 // Constants
 const SET_REPORTS = 'session/setReports';
 
-const getReports = (reports) => ({
+const getReports = (reports, count) => ({
     type: SET_REPORTS,
-    payload: reports
+    payload: { reports, count }
 });
 
-export const setAllReports = (page = 1) => async dispatch => {
-    const response = await csrfFetch(`/api/reports?page=${page}`);
+export const setAllReports = (page = 1, limit = 10) => async dispatch => {
+    const response = await csrfFetch(`/api/reports?page=${page}&limit=${limit}`);
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(getReports(data));
+        dispatch(getReports(data.reports, data.count));
     } else if (response.status < 500) {
         const errorMessages = await response.json();
         return errorMessages;
@@ -22,13 +22,13 @@ export const setAllReports = (page = 1) => async dispatch => {
     }
 };
 
-const initialState = { reports: null, allReports: [] };
+const initialState = { reports: [], count: 0, allReports: [] };
 
 function reportReducer(state = initialState, action) {
     let newState;
     switch (action.type) {
         case SET_REPORTS:
-            newState = { ...state, allReports: action.payload.reports };
+            newState = { ...state, allReports: action.payload.reports, count: action.payload.count };
             return newState;
         default:
             return state;

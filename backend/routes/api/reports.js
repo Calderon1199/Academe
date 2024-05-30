@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Report, Company } = require('../../db/models');
+const { Report, Admin, School,  } = require('../../db/models');
 const { where } = require('sequelize');
 
 const router = express.Router();
@@ -36,22 +36,23 @@ router.get('/', requireAuth, async (req, res, next) => {
     const { id } = req.user;
     const { userType } = req.cookies;
     const page = parseInt(req.query.page, 10) || 1;
-    const limit = 10;
+    const limit = parseInt(req.query.limit, 10) || 10;
     const offset = (page - 1) * limit;
     let reports;
 
     try {
         switch (userType) {
             case 'company':
-                reports = await Report.findAll({
+                reports = await Report.findAndCountAll({
                     where: { companyId: id },
+                    include: [{ model: School, required: true }, {model: Admin, required: true}],
                     order: [['createdAt', 'DESC']],
                     limit,
                     offset
                 });
                 break;
             case 'admin':
-                reports = await Report.findAll({
+                reports = await Report.findAndCountAll({
                     where: { adminId: id },
                     order: [['createdAt', 'DESC']],
                     limit,
@@ -59,7 +60,7 @@ router.get('/', requireAuth, async (req, res, next) => {
                 });
                 break;
             case 'parent':
-                reports = await Report.findAll({
+                reports = await Report.findAndCountAll({
                     where: { parentId: id },
                     order: [['createdAt', 'DESC']],
                     limit,
@@ -74,11 +75,12 @@ router.get('/', requireAuth, async (req, res, next) => {
                 return next(err);
         }
 
-        return res.send({ reports });
+        return res.send({ reports: reports.rows, count: reports.count });
     } catch (error) {
         next(error);
     }
 });
+
 
 
 
