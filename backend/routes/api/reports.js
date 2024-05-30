@@ -30,43 +30,54 @@ const router = express.Router();
 //         .withMessage('Last name must be between 2 and 50 characters.'),
 // ];
 
-// Sign up
+//
+
 router.get('/', requireAuth, async (req, res, next) => {
-    const {id} = req.user;
-    const {userType} = req.cookies;
+    const { id } = req.user;
+    const { userType } = req.cookies;
+    const page = parseInt(req.query.page, 10) || 1;
+    const limit = 10;
+    const offset = (page - 1) * limit;
     let reports;
 
-    switch (userType) {
-        case 'company':
-            reports = await Report.findAll({
-                where: {companyId: id},
-                order: [['createdAt', 'DESC']]
-            });
-            break;
-        case 'admin':
-            reports = await Report.findAll({
-                where: {adminId: id},
-                order: [['createdAt', 'DESC']]
-            });
-            break;
-        case 'parent':
-            reports = await Report.findAll({
-                where: {parentId: id},
-                order: [['createdAt', 'DESC']]
-            });
-            break;
-        default:
-            const err = new Error('Invalid user type');
-            err.status = 400;
-            err.title = 'Invalid user type';
-            err.errors = { userType: 'The provided user type is invalid.' };
-            return next(err);
-   }
+    try {
+        switch (userType) {
+            case 'company':
+                reports = await Report.findAll({
+                    where: { companyId: id },
+                    order: [['createdAt', 'DESC']],
+                    limit,
+                    offset
+                });
+                break;
+            case 'admin':
+                reports = await Report.findAll({
+                    where: { adminId: id },
+                    order: [['createdAt', 'DESC']],
+                    limit,
+                    offset
+                });
+                break;
+            case 'parent':
+                reports = await Report.findAll({
+                    where: { parentId: id },
+                    order: [['createdAt', 'DESC']],
+                    limit,
+                    offset
+                });
+                break;
+            default:
+                const err = new Error('Invalid user type');
+                err.status = 400;
+                err.title = 'Invalid user type';
+                err.errors = { userType: 'The provided user type is invalid.' };
+                return next(err);
+        }
 
-
-    return res.send({
-        reports
-    });
+        return res.send({ reports });
+    } catch (error) {
+        next(error);
+    }
 });
 
 

@@ -85,6 +85,7 @@ function HomeNav(props) {
                         <div className='second-section-buttons'>
                             <button><i className="fa-solid fa-house"></i> Dashboard</button>
                             <button><i className="fa-regular fa-folder"></i> Folders</button>
+                            <button onClick={() => navigate('/reports')}><i className="fa-regular fa-file-lines"></i> Reports</button>
                             <button><i className="fa-regular fa-message"></i> Chat</button>
                             <button><i className="fa-regular fa-calendar-days"></i> Calendar</button>
                         </div>

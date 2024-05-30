@@ -3,6 +3,7 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import Splash from '../components/Splash';
+import Reports from '../components/Report';
 
 export const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <Splash />,
+      },
+      {
+        path: "reports",
+        element: <Reports />,
       },
       {
         path: "login",

@@ -1,0 +1,8 @@
+.report-page {
+    display: flex;
+    gap: 5%;
+}
+
+.report-row {
+    display: flex;
+}
