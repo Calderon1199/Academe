@@ -37,6 +37,17 @@ module.exports = {
                     key: 'id'
                 },
             },
+            schoolId: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+                references: {
+                    model: {
+                        tableName: 'Schools',
+                        schema: options.schema
+                    },
+                    key: 'id'
+                },
+            },
             companyId: {
                 type: Sequelize.INTEGER,
                 allowNull: false,
