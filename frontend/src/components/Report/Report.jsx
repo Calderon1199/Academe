@@ -65,7 +65,7 @@ function Reports() {
                     {allReports.map((report) => (
                         <div key={report.id} className='report-row'>
                             <h5>{report.id}</h5>
-                            <p>{truncateNotes(report.notes)}</p>
+                            <p className='inline-notes'>{truncateNotes(report.notes)}</p>
                             <h5>{report.behaviorScore}</h5>
                             <h5>
                                 <img src={report.School.logo} alt="School Logo" style={{height: '40px', width: '40px', borderRadius: '20px'}} />
