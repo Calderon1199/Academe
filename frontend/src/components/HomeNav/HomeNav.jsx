@@ -31,7 +31,7 @@ function HomeNav(props) {
                 <div className='side-bar-mini'>
                 <i className="fa-solid fa-angles-right close-chevron" id='expand-nav' style={{fontSize: '15px', }} onClick={() => setCloseMenu(!closeMenu)}></i>
                 <img src='../../assets/letter-t.png' className='team-icon'></img>
-                <img src={user?.avatarUrl} style={{width: '40px', height: '40px', borderRadius: '40px', objectFit: 'cover'}} className='user-avi'></img>
+                <img src={user?.avatarUrl || user?.logo} style={{width: '40px', height: '40px', borderRadius: '40px', objectFit: 'cover'}} className='user-avi'></img>
                 <i className="fa-solid fa-chart-line"></i>
                 <i className="fa-regular fa-user"></i>
                 <h4 style={{fontSize: '12px', color: 'black'}}>Pages</h4>
@@ -65,7 +65,7 @@ function HomeNav(props) {
                     )}
                 </div>
                 <div className='user-header'>
-                    <img src={user?.avatarUrl} style={{width: '40px', height: '40px', borderRadius: '40px', objectFit: 'cover'}} className='user-avi'></img>
+                    <img src={user?.avatarUrl || user?.logo} style={{width: '40px', height: '40px', borderRadius: '40px', objectFit: 'cover'}} className='user-avi'></img>
                     <h5>{user?.name || `${user?.firstName} ${user?.lastName}`}</h5>
                 </div>
                 <div className='first-section-buttons'>

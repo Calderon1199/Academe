@@ -1,17 +1,14 @@
 /* Report.css */
 .report-page {
     display: flex;
-    align-items: center;
     padding: 20px;
     gap: 5%;
-    background-color: #f7f8fa;
     min-height: 100vh;
 }
 
 .report-header {
     width: 100%;
     max-width: 1200px;
-    margin: 20px 0;
 }
 
 .report-header h2 {
@@ -48,6 +45,7 @@
     justify-content: space-between;
     align-items: center;
     /* Center vertically */
+    height: 20px;
     padding: 15px 20px;
     border-bottom: 1px solid #f1f1f1;
 }
@@ -70,6 +68,7 @@
 .report-row p {
     flex: 1;
     text-align: center;
+    word-break: keep-all;
     margin: 0;
     padding: 0 10px;
     font-size: 14px;
@@ -111,4 +110,13 @@
     margin: 0 10px;
     font-size: 16px;
     color: #333;
+}
+
+.inline-notes {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
