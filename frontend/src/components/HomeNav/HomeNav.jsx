@@ -35,8 +35,9 @@ function HomeNav(props) {
                 <i className="fa-solid fa-chart-line"></i>
                 <i className="fa-regular fa-user"></i>
                 <h4 style={{fontSize: '12px', color: 'black'}}>Pages</h4>
-                <i className="fa-solid fa-house"></i>
+                <i className="fa-solid fa-house" onClick={() => navigate('/dashboard')}></i>
                 <i className="fa-regular fa-folder"></i>
+                <i className="fa-regular fa-file-lines" onClick={() => navigate('/reports')}></i>
                 <i className="fa-regular fa-message"></i>
                 <i className="fa-regular fa-calendar-days"></i>
                 <h4 style={{fontSize: '12px', color: 'black'}}>Labels</h4>
@@ -83,7 +84,7 @@ function HomeNav(props) {
                     </div>
                     {!closePages && (
                         <div className='second-section-buttons'>
-                            <button><i className="fa-solid fa-house"></i> Dashboard</button>
+                            <button><i className="fa-solid fa-house" onClick={() => navigate('/dashboard')}></i> Dashboard</button>
                             <button><i className="fa-regular fa-folder"></i> Folders</button>
                             <button onClick={() => navigate('/reports')}><i className="fa-regular fa-file-lines"></i> Reports</button>
                             <button><i className="fa-regular fa-message"></i> Chat</button>
