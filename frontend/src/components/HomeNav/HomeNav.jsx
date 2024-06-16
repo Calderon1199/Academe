@@ -13,6 +13,10 @@ function HomeNav(props) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    useEffect(() => {
+
+    }, [user])
+
     const logout = async (e) => {
         e.preventDefault();
 
@@ -39,7 +43,7 @@ function HomeNav(props) {
                 <i className="fa-regular fa-folder"></i>
                 <i className="fa-regular fa-file-lines" onClick={() => navigate('/reports')}></i>
                 <i className="fa-regular fa-message"></i>
-                <i className="fa-regular fa-calendar-days"></i>
+                <i className="fa-regular fa-calendar-days" onClick={() => navigate('/calendar')}></i>
                 <h4 style={{fontSize: '12px', color: 'black'}}>Labels</h4>
                 <i className="fa-solid fa-bookmark bk-high"></i>
                 <i className="fa-solid fa-bookmark bk-medium"></i>
@@ -88,7 +92,7 @@ function HomeNav(props) {
                             <button><i className="fa-regular fa-folder"></i> Folders</button>
                             <button onClick={() => navigate('/reports')}><i className="fa-regular fa-file-lines"></i> Reports</button>
                             <button><i className="fa-regular fa-message"></i> Chat</button>
-                            <button><i className="fa-regular fa-calendar-days"></i> Calendar</button>
+                            <button><i className="fa-regular fa-calendar-days" onClick={() => navigate('/dashboard')}></i> Calendar</button>
                         </div>
                     )}
                 </div>
