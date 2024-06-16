@@ -4,6 +4,7 @@ import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import Splash from '../components/Splash';
 import Reports from '../components/Report';
+import Calendar from '../components/Calendar';
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
       {
         path: "reports",
         element: <Reports />,
+      },
+      {
+        path: "calendar",
+        element: <Calendar />,
       },
       {
         path: "login",

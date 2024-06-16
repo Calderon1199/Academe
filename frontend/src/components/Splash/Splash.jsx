@@ -15,7 +15,7 @@ const Splash = () => {
 
   return (
     <div className='homepage'>
-      <HomeNav />
+      {/* <HomeNav /> */}
         <div className='homepage-intro'>
           <div className='homepage-intro-header'>
             <h1>Empower Parents, Elevate Education.</h1>
