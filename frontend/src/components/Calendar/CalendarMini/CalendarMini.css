@@ -1,0 +1,50 @@
+.calendar-mini-container {
+    width: 400px;
+    height: 300px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.calendar-mini-header {
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.calendar-mini-header h2 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.calendar-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    padding: 5px;
+}
+
+.calendar-mini-day-names {
+    display: contents;
+}
+
+.mini-day-name, .calendar-mini-day, .mini-empty-day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #ddd;
+    height: 40px;
+    font-size: 12px;
+}
+
+.calendar-mini-day {
+    background-color: #fff;
+}
+
+.calendar-mini-day:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}

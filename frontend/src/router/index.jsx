@@ -5,6 +5,8 @@ import Layout from './Layout';
 import Splash from '../components/Splash';
 import Reports from '../components/Report';
 import Calendar from '../components/Calendar';
+import Dashboard from '../components/Dashboard';
+
 
 export const router = createBrowserRouter([
   {
@@ -16,7 +18,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <Splash />,
+        element: <Dashboard />,
       },
       {
         path: "reports",
