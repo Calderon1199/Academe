@@ -26,6 +26,10 @@
   cursor: pointer;
 }
 
+.calendar-days {
+    display: contents;
+}
+
 .calendar-controls button:hover {
   background-color: #0056b3;
 }

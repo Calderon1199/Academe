@@ -33,9 +33,6 @@ function Calendar() {
             ))}
           </div>
           <div className="calendar-days">
-            {Array.from({ length: firstDayIndex }).map((_, index) => (
-              <div key={index} className="empty-day"></div>
-            ))}
             {days.map(day => (
               <div key={day} className="calendar-day">{day}</div>
             ))}
