@@ -4,7 +4,7 @@
 
 .calendar-content {
   flex-grow: 1;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
@@ -13,7 +13,11 @@
 .calendar-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: self-start;
+}
+
+.calendar-header h2 {
+    margin: 0;
 }
 
 .calendar-controls button {
@@ -28,10 +32,23 @@
 
 .calendar-days {
     display: contents;
+    background-color: #F4F5F6;
+    cursor: pointer;
 }
 
 .calendar-controls button:hover {
   background-color: #0056b3;
+}
+
+.calendar-day.empty {
+  background-color: #f0f0f0;
+  border: none;
+}
+
+.calendar-day.current-day {
+  background-color: #262626;
+  color: white;
+  font-weight: bold;
 }
 
 .calendar-grid {
