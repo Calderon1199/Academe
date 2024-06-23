@@ -27,7 +27,7 @@ function Calendar() {
       <div className="calendar-content">
         <div className="calendar-header">
           <h2>{`${months[date.getMonth()]} ${date.getFullYear()}`}</h2>
-          <div className="calendar-controls">
+          <div className="calendar-controls1">
             <button>Month</button>
             <button>Week</button>
             <button>Day</button>

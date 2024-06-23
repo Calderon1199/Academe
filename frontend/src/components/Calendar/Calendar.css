@@ -20,6 +20,34 @@
     margin: 0;
 }
 
+.calendar-controls1 button {
+    margin: 10px 0px;
+    width: 30%;
+    height: 35px;
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.calendar-controls1 button:hover {
+    font-weight: bold;
+    background-color: white;
+}
+
+.calendar-controls1 {
+    background-color: #F5F6F7;
+    display: flex;
+    align-items: center;
+    width: 30%;
+    border-radius: 15px;
+    height: 50px;
+    justify-content: center;
+}
+
+
 .calendar-controls button {
   margin: 0 5px;
   padding: 10px 20px;
@@ -37,11 +65,11 @@
 }
 
 .calendar-controls button:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .calendar-day.empty {
-  background-color: #f0f0f0;
+  background-color: #F5F6F7;
   border: none;
 }
 
@@ -69,6 +97,7 @@
   padding: 10px;
   border: 1px solid #ddd;
   height: 80px;
+  border-radius: 15px;
 }
 
 .calendar-day {
