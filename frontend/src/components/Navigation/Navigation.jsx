@@ -4,11 +4,11 @@ import "./Navigation.css";
 import { useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import SignupFormModal from "../SignupFormModal";
+import LoginFormModal from "../LoginFormModal";
 
 function Navigation() {
   const {setModalContent} = useModal();
   const user = useSelector(state => state.session.user);
-  console.log(user);
   const navigate = useNavigate()
 
   return (
@@ -32,7 +32,7 @@ function Navigation() {
         </li>
       </div>
       <li className="nav-buttons">
-        <button id="admin-button">Log In</button>
+        <button id="admin-button" onClick={() => setModalContent(< LoginFormModal />)}>Log In</button>
         <button id="parent-button" onClick={() => navigate('/signup')}>Sign Up</button>
       </li>
     </ul>

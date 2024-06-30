@@ -52,7 +52,7 @@ module.exports = {
       },
       role: {
         type: Sequelize.STRING(50),
-        allowNull: false
+        allowNull: true
       },
       email: {
         type: Sequelize.STRING(256),
@@ -60,7 +60,7 @@ module.exports = {
         unique: true
       },
       phoneNumber: {
-        type: Sequelize.STRING(10),
+        type: Sequelize.STRING(13),
         allowNull: false,
         unique: true
       },

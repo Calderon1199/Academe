@@ -11,9 +11,10 @@ module.exports = (sequelize, DataTypes) => {
          * The `models/index` file will call this method automatically.
          */
         static associate(models) {
+            Report.belongsTo(models.School, { foreignKey: 'schoolId', sourceKey: 'id' });
             Report.belongsTo(models.Parent, { foreignKey: 'parentId', sourceKey: 'id' });
             Report.belongsTo(models.Student, { foreignKey: 'studentId', sourceKey: 'id' });
-            Report.belongsTo(models.Admin, { foreignKey: 'AdminId', sourceKey: 'id' });
+            Report.belongsTo(models.Admin, { foreignKey: 'adminId', sourceKey: 'id' });
             Report.belongsTo(models.Company, { foreignKey: "companyId", sourceKey: 'id' });
         }
     }
@@ -23,6 +24,14 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             references: {
                 model: 'Students',
+                key: 'id'
+            }
+        },
+        schoolId: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'Schools',
                 key: 'id'
             }
         },
@@ -70,11 +79,6 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         sequelize,
         modelName: 'Report',
-        defaultScope: {
-            attributes: {
-                exclude: ["createdAt", "updatedAt"]
-            }
-        }
     });
     return Report;
 };

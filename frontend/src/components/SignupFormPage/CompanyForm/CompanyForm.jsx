@@ -42,14 +42,13 @@ function CompanyForm() {
             }, 'company')
         );
 
-        console.log(serverResponse, '--------------')
 
 
         if (!serverResponse.ok) {
                 setErrors(serverResponse.errors)
         } else {
             setErrors({}); // Clear errors
-            navigate("/home"); // Navigate to the desired page on successful submission
+            navigate("/dashboard"); // Navigate to the desired page on successful submission
         }
 
         setIsSubmitting(false); // Reset isSubmitting after handling form submission

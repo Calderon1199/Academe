@@ -39,6 +39,14 @@ module.exports = {
                 state: 'CA',
                 zipcode: '95624',
             },
+            {
+                name: 'McGarvey Elementary School',
+                phoneNumber: '9433434565',
+                companyId: 1,
+                address: '4403 leaf village ct',
+                state: 'CA',
+                zipcode: '95624',
+            },
         ], {})
     },
 

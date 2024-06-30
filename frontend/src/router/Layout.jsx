@@ -10,7 +10,6 @@ export default function Layout() {
   const dispatch = useDispatch();
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
-  console.log(location.pathname, '------qterhpnqp4tih')
   useEffect(() => {
     dispatch(thunkAuthenticate()).then(() => setIsLoaded(true));
   }, []);
@@ -18,7 +17,7 @@ export default function Layout() {
   return (
     <>
       <ModalProvider>
-        {location.pathname !== '/Home' && <Navigation /> }
+        {location.pathname !== '/dashboard' && location.pathname !== '/reports' && location.pathname !== '/calendar' && <Navigation /> }
         {isLoaded && <Outlet />}
         <Modal />
       </ModalProvider>

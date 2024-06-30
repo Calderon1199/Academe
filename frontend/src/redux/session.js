@@ -28,11 +28,12 @@ export const thunkAuthenticate = () => async (dispatch) => {
     }
 };
 
-export const thunkLogin = (credentials) => async dispatch => {
-    const {email, password} = credentials
+export const thunkLogin = (credentials, userType) => async dispatch => {
+    const { email, password } = credentials;
+    console.log(userType, '------------')
     const response = await csrfFetch("/api/session", {
         method: "POST",
-        body: JSON.stringify({credential: email, password})
+        body: JSON.stringify({ credential: email, password, userType })
     });
 
     if (response.ok) {
@@ -40,9 +41,9 @@ export const thunkLogin = (credentials) => async dispatch => {
         dispatch(setUser(data));
     } else if (response.status < 500) {
         const errorMessages = await response.json();
-        return errorMessages
+        return errorMessages;
     } else {
-        return { server: "Something went wrong. Please try again" }
+        return { server: "Something went wrong. Please try again" };
     }
 };
 

@@ -9,13 +9,13 @@ const Splash = () => {
   const user = useSelector(state => state.session?.user);
   useEffect(() => {
     if (user) {
-      navigate('/Home')
+      navigate('/dashboard')
     }
   }, [user])
 
   return (
     <div className='homepage'>
-      <HomeNav />
+      {/* <HomeNav /> */}
         <div className='homepage-intro'>
           <div className='homepage-intro-header'>
             <h1>Empower Parents, Elevate Education.</h1>

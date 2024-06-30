@@ -76,7 +76,7 @@ router.post('/', validateCompanySignup, async (req, res) => {
         const hashedPassword = bcrypt.hashSync(password);
         const company = await Company.create({ email, hashedPassword, name, phoneNumber, address, state, zipcode });
 
-        const safeCompany = {
+        const safeUser = {
             id: company.id,
             email: company.email,
             name: company.name,
@@ -86,35 +86,34 @@ router.post('/', validateCompanySignup, async (req, res) => {
             zipcode: company.zipcode,
         };
 
-        await setTokenCookie(res, safeCompany, 'company');
+        await setTokenCookie(res, safeUser, 'company');
+        res.cookie('userType', 'company', { httpOnly: true, secure: process.env.NODE_ENV === 'production', maxAge: 7 * 24 * 60 * 60 * 1000 });
 
         return res.json({
-            businessAdmin: safeCompany
+            user: safeUser
         });
     } catch (err) {
-
-        console.log(err, 'wtf')
         return res.status(500).json({ message: 'Internal server error' });
     }
 });
 
 // Restore session admin
 router.get('/', (req, res) => {
-    const { businessAdmin } = req;
-    if (businessAdmin) {
-        const safeCompany = {
+    const { user } = req;
+    if (user) {
+        const safeUser = {
             id: businessAdmin.id,
             email: businessAdmin.email,
             name: businessAdmin.username,
             phoneNumber: businessAdmin.phoneNumber,
             address: businessAdmin.address,
             state: businessAdmin.state,
-            zipcode: businessAdmin.zipcode
+            zipcode: businessAdmin.zipcode,
         };
         return res.json({
-            businessAdmin: safeCompany
+            user: safeUser
         });
-    } else return res.json({ businessAdmin: null });
+    } else return res.json({ user: null });
 });
 
 

@@ -26,18 +26,18 @@
     grid-gap: 10px
 }
 
-.signup-form, input, label {
+.signup-form, input, label, select {
     box-sizing: border-box;
     width: 100%;
 }
 
-.signup-form label {
+.signup-form label, select {
     font-weight: bold;
     font-size: 12px;
     font-family: 'poppins'
 }
 
-.signup-form input {
+.signup-form input, select {
     border: 2px solid #E6E6E6;
     height: 40px;
     border-radius: 5px;
@@ -129,4 +129,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+
+
+button.selected {
+    color: #36CE75;
+    border-color: #36CE75;
+}
+
+button.selected:hover {
+    background: none;
 }

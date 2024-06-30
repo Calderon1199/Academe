@@ -17,6 +17,7 @@ module.exports = {
         return queryInterface.bulkInsert(options, [
             {
                 studentId: 1,
+                schoolId: 1,
                 adminId: 1,
                 parentId: 1,
                 companyId: 1,
@@ -26,6 +27,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                schoolId: 1,
                 adminId: 1,
                 parentId: 1,
                 companyId: 1,
@@ -35,6 +37,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                schoolId: 1,
                 adminId: 1,
                 parentId: 1,
                 companyId: 1,
@@ -44,6 +47,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                schoolId: 2,
                 adminId: 1,
                 parentId: 1,
                 companyId: 1,
@@ -53,6 +57,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                schoolId: 2,
                 adminId: 1,
                 parentId: 1,
                 companyId: 1,
@@ -62,6 +67,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                schoolId: 2,
                 adminId: 1,
                 parentId: 1,
                 companyId: 1,
@@ -71,6 +77,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                schoolId: 3,
                 adminId: 1,
                 parentId: 1,
                 companyId: 1,
@@ -80,6 +87,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                schoolId: 3,
                 adminId: 1,
                 parentId: 1,
                 companyId: 1,
@@ -89,6 +97,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                schoolId: 3,
                 adminId: 1,
                 parentId: 1,
                 companyId: 1,
@@ -98,6 +107,7 @@ module.exports = {
             },
             {
                 studentId: 1,
+                schoolId: 4,
                 adminId: 1,
                 parentId: 1,
                 companyId: 1,
@@ -107,6 +117,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                schoolId: 4,
                 adminId: 1,
                 parentId: 2,
                 companyId: 1,
@@ -116,6 +127,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                schoolId: 4,
                 adminId: 1,
                 parentId: 2,
                 companyId: 1,
@@ -125,6 +137,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                schoolId: 4,
                 adminId: 1,
                 parentId: 2,
                 companyId: 1,
@@ -134,6 +147,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                schoolId: 2,
                 adminId: 1,
                 parentId: 2,
                 companyId: 1,
@@ -143,6 +157,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                schoolId: 1,
                 adminId: 1,
                 parentId: 2,
                 companyId: 1,
@@ -152,6 +167,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                schoolId: 4,
                 adminId: 1,
                 parentId: 2,
                 companyId: 1,
@@ -161,6 +177,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                schoolId: 3,
                 adminId: 1,
                 parentId: 2,
                 companyId: 1,
@@ -170,6 +187,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                schoolId: 1,
                 adminId: 1,
                 parentId: 2,
                 companyId: 1,
@@ -179,6 +197,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                schoolId: 3,
                 adminId: 1,
                 parentId: 2,
                 companyId: 1,
@@ -188,6 +207,7 @@ module.exports = {
             },
             {
                 studentId: 2,
+                schoolId: 1,
                 adminId: 1,
                 parentId: 2,
                 companyId: 1,

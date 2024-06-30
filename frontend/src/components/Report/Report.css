@@ -1,0 +1,122 @@
+/* Report.css */
+.report-page {
+    display: flex;
+    padding: 20px;
+    gap: 3%;
+    min-height: 100vh;
+}
+
+.report-header {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.report-header h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.report-header button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.report-header button:hover {
+    background-color: #0056b3;
+}
+
+.report-container {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.report-header-row,
+.report-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Center vertically */
+    height: 20px;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.report-header-row {
+    background-color: #e9ecef;
+    font-weight: bold;
+}
+
+.report-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.report-row:last-child {
+    border-bottom: none;
+}
+
+.report-header-row h5,
+.report-row h5,
+.report-row p {
+    flex: 1;
+    text-align: center;
+    word-break: keep-all;
+    margin: 0;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.report-row img {
+    display: block;
+    margin: 0 auto;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination-controls button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pagination-controls button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.pagination-controls span {
+    margin: 0 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.inline-notes {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

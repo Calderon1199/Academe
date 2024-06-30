@@ -5,48 +5,14 @@ import { thunkSignup } from "../../redux/session";
 import "./SignupForm.css";
 import CompanyForm from "./CompanyForm";
 import AdminForm from "./AdminForm/AdminForm";
+import ParentForm from "./ParentForm";
 
 function SignupFormPage() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const sessionUser = useSelector((state) => state.session.user);
-  const [accountType, setAccountType] = useState("");
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [studentRelation, setStudentRelation] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState({});
+  const [accountType, setAccountType] = useState("company");
 
-  if (sessionUser) return <Navigate to="/" replace={true} />;
+  if (sessionUser) return <Navigate to="/dashboard" replace={true} />;
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (password !== confirmPassword) {
-      return setErrors({
-        confirmPassword:
-          "Confirm Password field must be the same as the Password field",
-      });
-    }
-
-    const serverResponse = await dispatch(
-      thunkSignup({
-        email,
-        username,
-        password,
-      })
-    );
-
-    if (serverResponse) {
-      setErrors(serverResponse);
-    } else {
-      navigate("/");
-    }
-  };
 
   return (
     <div className="signup-form-page">
@@ -57,11 +23,10 @@ function SignupFormPage() {
         <h1>Registration</h1>
         <h3>Choose your account type</h3>
         <div className="account-type-buttons">
-          <button onClick={() => setAccountType('company')}>Company <i class="fa-regular fa-building"></i></button>
-          <button onClick={() => setAccountType('admin')}>Admin <i class="fa-solid fa-user-tie"></i></button>
-          <button onClick={() => setAccountType('parent')}>Parent <i class="fa-regular fa-user"></i></button>
+          <button className={accountType === 'company' ? 'selected': ''} onClick={() => setAccountType('company')}>Company <i className="fa-regular fa-building"></i></button>
+          <button className={accountType === 'admin' ? 'selected': ''} onClick={() => setAccountType('admin')}>Admin <i className="fa-solid fa-user-tie"></i></button>
+          <button className={accountType === 'parent' ? 'selected': ''} onClick={() => setAccountType('parent')}>Parent <i className="fa-regular fa-user"></i></button>
         </div>
-        {errors.server && <p>{errors.server}</p>}
         {accountType === 'company' && (
           < CompanyForm />
         )}
@@ -69,93 +34,10 @@ function SignupFormPage() {
         {accountType === 'admin' && (
           < AdminForm />
         )}
-        {/* (
-          <form onSubmit={handleSubmit} className="signup-form">
-          <div className="signup-info-grid">
-            <label>
-            First Name
-            <input
-              type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-            />
-            </label>
-            {errors.firstName && <p>{errors.firstName}</p>}
-            <label>
-              Last Name
-              <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                required
-              />
-            </label>
-            {errors.lastName && <p>{errors.lastName}</p>}
-            <label>
-            Phone Number
-            <input
-              type="text"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              required
-            />
-            </label>
-            {errors.phoneNumber && <p>{errors.phoneNumber}</p>}
-            <label>
-              Student relation
-              <input
-                type="text"
-                value={studentRelation}
-                onChange={(e) => setStudentRelation(e.target.value)}
-                required
-              />
-            </label>
-            {errors.studentRelation && <p>{errors.studentRelation}</p>}
-          </div>
-          <label>
-            Email
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </label>
-          {errors.email && <p>{errors.email}</p>}
-          <label>
-            Username
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
-          </label>
-          {errors.username && <p>{errors.username}</p>}
-          <label>
-            Password
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </label>
-          {errors.password && <p>{errors.password}</p>}
-          <label>
-            Re-enter Password
-            <input
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </label>
-          {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-        </form>
-        )} */}
-          {/* <button type="submit" className="signup-enter-button enabled">Submit</button> */}
+
+        {accountType === 'parent' && (
+          < ParentForm />
+        )}
       </div>
     </div>
   );
