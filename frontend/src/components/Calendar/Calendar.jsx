@@ -32,18 +32,18 @@ function Calendar() {
             <button>Week</button>
             <button>Day</button>
           </div>
-          <div className="calendar-controls">
+          <div className="calendar-controls2">
             <button><i class="fa-solid fa-chevron-left"></i></button>
             <span>Today</span>
             <button><i class="fa-solid fa-chevron-right"></i></button>
           </div>
         </div>
-        <div className="calendar-grid">
           <div className="calendar-day-names">
-            {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
+            {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(day => (
                 <div className="day-name" key={day}>{day}</div>
             ))}
           </div>
+        <div className="calendar-grid">
           <div className="calendar-days">
             {Array(firstDayIndex).fill(null).map((_, index) => (
               <div key={`empty-${index}`} className="calendar-day empty"></div>
