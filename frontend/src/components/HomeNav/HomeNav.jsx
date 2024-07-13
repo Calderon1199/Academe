@@ -92,7 +92,7 @@ function HomeNav(props) {
                             <button><i className="fa-regular fa-folder"></i> Folders</button>
                             <button onClick={() => navigate('/reports')}><i className="fa-regular fa-file-lines"></i> Reports</button>
                             <button><i className="fa-regular fa-message"></i> Chat</button>
-                            <button><i className="fa-regular fa-calendar-days" onClick={() => navigate('/calendar')}></i> Calendar</button>
+                            <button onClick={() => navigate('/calendar')}><i className="fa-regular fa-calendar-days"></i> Calendar</button>
                         </div>
                     )}
                 </div>
