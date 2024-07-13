@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Calendar.css';
 import HomeNav from '../HomeNav';
 import CalendarWeek from './CalendarWeek';
 
 function Calendar() {
     let date = new Date();
-    const [selected, setSelected] = useState('');
+    const [selected, setSelected] = useState('month');
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
     const getDaysInCurrentMonth = () => {
@@ -29,27 +29,32 @@ function Calendar() {
 
     const currentDay = date.getDate();
 
+    useEffect(() => {
+
+    }, [selected])
+
     return (
         <div className="calendar-container">
             <HomeNav />
+            <div className="calendar-header">
+            <div className="calendar-content">
+                <h2>{`${months[date.getMonth()]}, ${date.getFullYear()}`}</h2>
+                <div className="calendar-controls1">
+                    <button onClick={() => setSelected('month')}>Month</button>
+                    <button onClick={() => setSelected('week')}>Week</button>
+                    <button>Day</button>
+                </div>
+                <div className="calendar-controls2">
+                    <button><i className="fa-solid fa-chevron-left"></i></button>
+                    <span>Today</span>
+                    <button><i className="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
             {selected === 'week' && (
-              < CalendarWeek />
+              <CalendarWeek />
             )}
             {selected === 'month' && (
-              <div className="calendar-content">
-                  <div className="calendar-header">
-                      <h2>{`${months[date.getMonth()]}, ${date.getFullYear()}`}</h2>
-                      <div className="calendar-controls1">
-                          <button>Month</button>
-                          <button onClick={() => setSelected('week')}>Week</button>
-                          <button>Day</button>
-                      </div>
-                      <div className="calendar-controls2">
-                          <button><i className="fa-solid fa-chevron-left"></i></button>
-                          <span>Today</span>
-                          <button><i className="fa-solid fa-chevron-right"></i></button>
-                      </div>
-                  </div>
+              <div>
                   <div className="calendar-day-names">
                       {['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].map(day => (
                           <div className="day-name" key={day}>{day}</div>
@@ -74,6 +79,7 @@ function Calendar() {
                   </div>
               </div>
             )}
+              </div>
         </div>
     );
 }
